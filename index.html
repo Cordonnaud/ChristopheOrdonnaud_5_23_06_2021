@@ -1,39 +1,105 @@
-
 <!doctype html>
 <html lang="fr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
     <title>Les petits plats</title>
   </head>
   <body>
     <nav class="navbar navbar-light bg-transparent">
         <div class="container justify-content-center">
-          <a class="navbar-brand" href="#">
-            <img src="./img/logo.png" alt="Image de logo Les Petits Plats">
-          </a>
+            <a class="navbar-brand" href="#">
+                <img src="./img/logo.png" alt="Image de logo Les Petits Plats">
+            </a>
         </div>
-      </nav>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="mb-3">
-              <input type="text" class="form-control" id="searchbar">
-              <i class="fas fa-search"></i>
-              
+    </nav>
+    <div class="container search_filter">
+        <div class="row search_area">
+            <div class="col">
+                <div class="col mb-3" id="searchbar">
+                    <input type="text" class="form-search_area" placeholder="Rechercher un ingredient,appareils ou une recette"/>
+                    <span class="input_icon"><i class="bi bi-search"></i></span>
+                </div> 
             </div>
-          </div>
         </div>
-        <div class="row">
-          <div class="col" id="recettes-list">
-            
-          </div>
+        <div class= "row tag_area">
+            <div class="row" >
+                <div class="col-2 mb-1" id="tag_ingredients">
+                    <input type="text" class="form-tag_area" id="searchbar1" placeholder="Ingredients"/>
+                    <span class="input_icon"><i class="bi bi-x-circle"></i></span> 
+                </div>
+                <div class="col-2 mb-1" id="tag_appareils">
+                    <input type="text" class="form-tag_area" id="searchbar2" placeholder="Appareils"/>
+                    <span class="input_icon"><i class="bi bi-x-circle"></i></span> 
+                </div>
+                <div class="col-2 mb-1" id="tag_ustensiles">
+                    <input type="text" class="form-tag_area" id="searchbar3" placeholder="Ustensiles"/>
+                    <span class="input_icon"><i class="bi bi-x-circle"></i></span> 
+                </div>
+            </div>
         </div>
-      </div>
-    <script src="https://kit.fontawesome.com/ef8e5078a4.js" crossorigin="anonymous"></script>
+        <div class= "row filter_area">
+            <div class="row" >
+                <div class="col-2" id="filter_ingredients">
+                    <input type="text" placeholder="Ingredients" class="form-filter_area" id="searchbar1"/>
+                    <sapn class="selection"><select name="my_html_select_box"></select></sapn>
+                </div>
+                <div class="col-2" id="filter_appareils">
+                    <input type="text" placeholder="Appareils" class="form-filter_area" id="searchbar2"/>
+                    <sapn class="selection"><select name="my_html_select_box"></select></sapn>
+                </div>
+                <div class="col-2" id="filter_ustensiles">
+                    <input type="text" placeholder="Ustensiles" class="form-filter_area" id="searchbar3"/>
+                    <sapn class="selection"><select name="my_html_select_box"></select></sapn>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container recipes_container" id="recipes">
+        <div class= "row">
+            <div class="row" >
+                <div class="col-4" id="1">
+                    <div class="image_area"></div>
+                    <div class="text_area">
+                        <div class= "name_area" value="name"> Name recipes</div>
+                        <div class="time_area" value="time">Time recipes</div>
+                        <div class="ingredients_area" value="ingredients">Ingredients recipes</div>
+                        <div class="description_area" value="description">Description recipes</div>
+                    </div>
+                </div>
+                <div class="col-4" id="2">
+                    <div class="image_area"></div>
+                    <div class="text_area">
+                        <div class= "name_area" value="name"> Name recipes</div>
+                        <div class="time_area" value="time">Time recipes</div>
+                        <div class="ingredients_area" value="ingredients">Ingredients recipes</div>
+                        <div class="description_area" value="description">Description recipes</div>
+                    </div>
+                </div>
+                <div class="col-4" id="3">
+                    <div class="image_area"></div>
+                    <div class="text_area">
+                        <div class= "name_area" value="name"> Name recipes</div>
+                        <div class="time_area" value="time">Time recipes</div>
+                        <div class="ingredients_area" value="ingredients">Ingredients recipes</div>
+                        <div class="description_area" value="description">Description recipes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<script src="https://kit.fontawesome.com/ef8e5078a4.js" crossorigin="anonymous"></script>-->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    
     <script src="./js/recipes.js"></script>
     <script src="./js/site.js"></script>
   </body>

@@ -1,1 +1,79 @@
-/* Page de style*/
+#searchbar {
+    background-color: #E7E7E7 ;
+    height: 69px;
+    left: 0px;
+    top: 0px;
+    border-radius: 5px;
+
+    
+}
+.form-search_area{ 
+    position: relative;
+    background-color: #E7E7E7 ;
+    width: 90%;
+    left: 10px;
+    bottom: 5px;
+    margin-right: 3rem ;
+    overflow: visible;
+    border:none ;
+}
+.form-tag_area{ 
+    left: 10px;
+    bottom: 5px;
+    margin-right: 0rem ;
+    overflow: visible;
+}
+
+
+.bi-search{
+    font-size: 2.5rem;
+}
+.bi-x-circle{
+    font-size: 1.25rem;
+    color: grey;
+    font-weight: bolder;
+
+}
+.selection{
+    border:none;
+}
+
+.form-tag_area, .form-filter_area{
+    width: 170px;
+    left: 0px;
+    top: 0px;
+    border-radius: 5px;
+    padding-left: 1rem;
+}
+/* .form-tag_area {
+    height: 39px;
+} */
+
+
+.form-filter_area{
+    height: 69px;  
+}
+.form-filter_area::placeholder, .form-tag_area::placeholder{
+    color: white;
+
+}
+
+#searchbar1{
+    background-color: #3282F7 ;
+}
+
+#searchbar2{
+    background-color: #68D9A4 ; 
+}
+
+#searchbar3{
+    background-color: #ED6454 ; 
+}
+
+#tag_ingredients{
+    left: 0px;
+    top: 0px;
+    border-radius: 5px;
+   
+}
+
