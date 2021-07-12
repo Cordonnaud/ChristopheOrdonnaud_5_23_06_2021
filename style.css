@@ -1,21 +1,21 @@
-#searchbar {
+.search_bar {
     background-color: #E7E7E7 ;
     height: 69px;
     left: 0px;
-    top: 0px;
+    top: 10px;
     border-radius: 5px;
 
     
 }
-.form-search_area{ 
+#search_area{ 
     position: relative;
     background-color: #E7E7E7 ;
     width: 90%;
     left: 10px;
     bottom: 5px;
-    margin-right: 3rem ;
     overflow: visible;
     border:none ;
+    left: 0px;
 }
 .form-tag_area{ 
     left: 10px;
@@ -26,9 +26,9 @@
 
 
 .bi-search{
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
-.bi-x-circle{
+/* .bi-x-circle{
     font-size: 1.25rem;
     color: grey;
     font-weight: bolder;
@@ -44,13 +44,13 @@
     top: 0px;
     border-radius: 5px;
     padding-left: 1rem;
-}
+} */
 /* .form-tag_area {
     height: 39px;
 } */
 
 
-.form-filter_area{
+/* .form-filter_area{
     height: 69px;  
 }
 .form-filter_area::placeholder, .form-tag_area::placeholder{
