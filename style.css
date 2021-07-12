@@ -28,6 +28,59 @@
 .bi-search{
     font-size: 2rem;
 }
+
+.card-img-top{
+    height: 178px;
+    background-color: #C7BEBE;
+}
+.card-body{
+    height: 186px;
+    background-color:#E7E7E7;
+}
+.card-text{
+    display: grid;
+    /* grid-template-columns: [first-line] 50% [second-line] 16% [last-line] 100%;
+    grid-template-rows: [first-row] 25% [second-row] 75% [last-row] 100%; */
+    grid-template-columns: [first] 50% [line2] 16% [line3]auto;
+    grid-template-rows: [row1-start] 25% [last-line]auto;
+}
+.card-title{
+    grid-column-start: 1 ;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+
+}
+.time_area{
+    font-weight: bold;
+    grid-column-start: 3 ;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+}
+.bi-clock{
+    font-size: 1.2rem;
+}
+.ingredients_area{
+    grid-column-start: 1 ;
+    grid-column-end: 2;
+    grid-row-start: 3;
+    grid-row-end: 4;
+
+}
+.description_area{
+    grid-column-start: 2 ;
+    grid-column-end: 4;
+    grid-row-start: 3;
+    grid-row-end: 4;
+
+}
+/* .info-card{
+    align-items: center;
+} */
+
+
 /* .bi-x-circle{
     font-size: 1.25rem;
     color: grey;
