@@ -1,4 +1,4 @@
-const recipes = [
+let recipes = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -1722,3 +1722,9 @@ const recipes = [
         "ustensils":["rouleau à patisserie","fouet"]
     }
 ]
+
+// const newsIngredients = recipes.filter((ingredient) => {
+//     return ingredient value;
+// });
+
+// console.log(newIngredient)
