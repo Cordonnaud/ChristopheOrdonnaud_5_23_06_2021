@@ -20,36 +20,40 @@
     <div class=" container ">
         <div class="row bg-light mb-3">
             <div class="search_bar input-group bg-transparent ">
-                <input type="text" class="form-control bg-light border-0 pl-3" id="searcharea" placeholder="Rechercher un ingredient,appareils ou une recette" aria-label="Recherche globale" aria-describedby="bi-search"/>  
+                <input type="text" class="form-control bg-light border-0 pl-3" id="searchbar" placeholder="Rechercher un ingredient,appareils ou une recette" aria-label="Recherche globale" aria-describedby="bi-search"/>  
                 <span class="input_icon w- pr-3"><i class="bi bi-search "></i></span>
             </div>
-        </div>-------------------------------------------------------
-        
-        
-        <div class= "row filter_area mb-6">
-            <div class="row" >
-                <div class="col-2" id="filter_ingredients">
-                    <input type="text" placeholder="Ingredients" class="form-filter_area" id="searchbar1"/>
-                    <sapn class="selection">
-                        <i class="fas fa-chevron-up"></i>
-                        <i class="fas fa-chevron-down"></i>
-                    </select></sapn>
-                </div>
-                <div class="col-2" id="filter_appareils">
-                    <input type="text" placeholder="Appareils" class="form-filter_area" id="searchbar2"/>
-                    <sapn class="selection">
-                        <i class="fas fa-chevron-up"></i>
-                        <i class="fas fa-chevron-down"></i>
-                </div>
-                <div class="col-2" id="filter_ustensiles">
-                    <input type="text" placeholder="Ustensiles" class="form-filter_area" id="searchbar3"/>
-                    <sapn class="selection">
-                        <i class="fas fa-chevron-up"></i>
-                        <i class="fas fa-chevron-down"></i>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-2 mb-3">
+                <select class=" form-select bg-primary" aria-label="Default select example">
+                    <option selected>Ingredients</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
             </div>
-        </div>------------------------------------------------------------
-        
+            <div class="col-2 mb-3">
+                <select class="form-select bg-danger" aria-label="Default select example">
+                    <option selected>Appareils</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="col-2 mb-3">
+                <select class="form-select bg-success" aria-label="Default select example">
+                    <option selected>Ustensils</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+
+        </div>
+
+
         <div class="row ">
             <div class="col-12 col-lg-4 mb-3">
               <div class="card"><a href="#"></a>

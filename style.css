@@ -57,6 +57,7 @@
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 3;
+    margin-left: 1rem;
 
 }
 .bi-clock{
@@ -74,6 +75,7 @@
     grid-column-end: 4;
     grid-row-start: 3;
     grid-row-end: 4;
+    margin-left: 1rem;
 
 }
 /* .info-card{
