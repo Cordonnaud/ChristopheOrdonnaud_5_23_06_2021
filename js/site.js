@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log(recipes);
+    // console.log(recipes);
 
     let ingredientsArray = [];
     createIngredientsList(ingredientsArray);
@@ -45,6 +45,7 @@ function createIngredientsList(ingredientArrayToAgregate) {
         }
     }
 }
+
 
 function createAppliancesList(applianceToAggregate) {
     for(var i = 0; i < recipes.length; i++) {
