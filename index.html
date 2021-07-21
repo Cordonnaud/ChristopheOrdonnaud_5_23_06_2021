@@ -17,37 +17,47 @@
             </a>
         </div>
     </nav>
+    <!-- <div class="container">
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <input type="text" class="form-control" id="searchbar">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col" id="recettes-list" ></div>
+      </div>
+    </div> -->
     <div class=" container ">
         <div class="row bg-light mb-3">
             <div class="search_bar input-group bg-transparent ">
-                <input type="text" class="form-control bg-light border-0 pl-3" id="searchbar" placeholder="Rechercher un ingredient,appareils ou une recette" aria-label="Recherche globale" aria-describedby="bi-search"/>  
-                <span class="input_icon w- pr-3"><i class="bi bi-search "></i></span>
+              <label for="searchbar"></label>
+              <input type="text" class="form-control bg-light border-0 pl-3" id="searchbar" placeholder="Rechercher un ingredient,appareils ou une recette" aria-label="Recherche globale" />  
+              <button id="searchBtn"><i class="bi bi-search "></i></button>
+              <!-- <span class="input_icon w- pr-3"></i></span> -->
+                
             </div>
+        </div>
+        
+        <div class="row">
+          <div class="col" id="recettes-list" ></div>
         </div>
         <div class="row">
             <div class="col-2 mb-3">
-                <select class=" form-select bg-primary" aria-label="Default select example">
-                    <option selected> Ingredients</option>
-                    <option value="ingredientsArray">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+              <select class=" form-select bg-primary" id="ingredients-list" aria-label="Default select example" placeholder="Ingredients">
+                <option selected>Ingredient</option>
+              </select>
             </div>
             <div class="col-2 mb-3">
-                <select class="form-select bg-danger" aria-label="Default select example">
-                    <option selected>Appareils</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+              <select class="form-select bg-danger" id="appliances-list" aria-label="Default select example">
+                <option selected>Appareils</option>
+              </select>
             </div>
             <div class="col-2 mb-3">
-                <select class="form-select bg-success" aria-label="Default select example">
-                    <option selected>Ustensils</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
+              <select class="form-select bg-success" id="ustensils-list" aria-label="Default select example">
+                <option selected>Ustensils</option>
+              </select>
             </div>
 
 
@@ -101,7 +111,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="./js/recipes.js"></script>
     <script src="./js/mysite.js"></script>
-    <script src="./js/Array.js"></script>
+    <!-- <script src="./js/Array.js"></script> -->
 
   </body>
 </html>
