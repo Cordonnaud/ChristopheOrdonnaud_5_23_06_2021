@@ -1,8 +1,3 @@
-//  avancement
-
-
-console.log("Start Algo");
-
 let ingredientsArray = [];
 let appliancesArray = [];
 let ustensilsArray = [];
@@ -80,43 +75,42 @@ function createAppliancesList (applianceArrayToAgregate) {
     }
 }
 
-const button = document.getElementById("searchBtn");
-button .addEventListener("click", function() {
-    let searchBarInput = document.getElementById("searchbar");
-    searchBarInput.addEventListener("change", function(event) {
-        let searchText = event.target.value;
-        console.log(searchText);
-        if(searchText !== "") {
-            if(ingredientsArray.indexOf(searchText) > -1) {
-                let indexOfIngredients = ingredientsArray.indexOf(searchText);
-                let ingredient = ingredientsArray[indexOfIngredients];
-                console.log("Ingredients visible dans notre tableau");
-                console.log(ingredient);
-                console.log("Recettes avec cet ingredient :");
-                let recipesToShow = searchRecipeFromIngredients(ingredient);
-                console.log(recipesToShow);
-                showRecipes(recipesToShow);
+// Récuperer les donner de searchBar
+let searchBarInput = document.getElementById("searchbar");
+// tableaux des filtres en cft de searchBarInput
+let searchingIngredients =[];
+
+// let searchingUstensils =[];
+// console.log(searchingUstensils);
+// let searchingApplances =[]
+// console.log(searchingApplances);
+
+// lire le contenu de searchBar
+searchBarInput.addEventListener("input", function(event) {
+    let searchText = event.target.value; // la variable SearchText = valeur de la cible (ici le texte documenté dans searchBar)
+    // console.log(searchText);
+    if(searchText !== "") {
+        if(searchText.length >3) {// si le nb de caractere du texte est sup à 3
+            let searchValue = searchText.toLowerCase(); // la variable SearchValue = le texte en minuscule
+            console.log(searchValue);
+            if(searchValue.indexOf(" ") != -1) { // si le texte en minuscule comprend des espaces
+                let searchArray = searchValue.split(" "); // la variable searchArray = séparer searchValue sur le caractere "espace"
+                console.log("Tableau de recherche par mot");
+                console.log(searchArray);
+                for(let i = 0 ; i < searchArray.length; i++) {
+                    let word= searchArray[i]; // la variable word = le tableau des mot recherchés
+                    // console.log(word);
+                    for(let j=0; j<ingredientsArray.length - 1; j++) {
+                        let ingredient = ingredientsArray[j].toLowerCase();
+                        // console.log(ingredient);
+                        if(ingredient.includes(word)) {
+                            searchingIngredient.push(j);
+                        }
+                    }
+                }
+                console.log("Ingredients recherchés")
+                console.log(searchingIngredients);
             }
         }
-    })
-});    
-
-
-// const inputSearchBar = document.getElementById("searchbar"); //récuperation des données de searchbar
-// inputSearchBar.addEventListener("modify", function (e){ // "écoute" de la donné de l'input searchbar
-//     let searchBarText = e.target.value; //création de la variable  "searcBarText" qui est égale à la valeur documentée dans searchbar 
-//     if(searchBarText !== ""{
-//         let 
-
-//     })
-// });
-// const searchError = document.getElementById("search_error");
-// console.log(inputSearchBar.value);
-
-// function input(){ 
-//     if(inputSearchBar.value == "") {
-//         searchError.innerHTML = "Essai";
-//     }
-// }
-
-// console.log("merdum");
+    }
+});
