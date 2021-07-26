@@ -86,7 +86,7 @@ let searchingIngredients =[];
 // console.log(searchingApplances);
 
 // lire le contenu de searchBar
-searchBarInput.addEventListener("input", function(event) {
+searchBarInput.addEventListener("change", function(event) {
     let searchText = event.target.value; // la variable SearchText = valeur de la cible (ici le texte documenté dans searchBar)
     // console.log(searchText);
     if(searchText !== "") {
@@ -114,3 +114,17 @@ searchBarInput.addEventListener("input", function(event) {
         }
     }
 });
+
+// Ajout tableau dans le filtre ingrédients
+// let ingredientFilter = document.getElementById('ingredients_list');
+// var ingredientListHtml = document.createElement('ul');
+
+// for(var i = 0; i < ingredientsArray.length - 1; i++) {
+//     var ingredientItemHtml = document.createElement('li');
+//     ingredientItemHtml.textContent = ingredientsArray[i];
+//     ingredientItemHtml.classList = "ingredients";
+//     ingredientListHtml.appendChild(ingredientItemHtml);
+// }
+
+// ingredientFilter.appendChild(ingredientListHtml);
+
