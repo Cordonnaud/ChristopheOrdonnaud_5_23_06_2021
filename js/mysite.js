@@ -1,12 +1,16 @@
 let ingredientsArray = [];
 let appliancesArray = [];
 let ustensilsArray = [];
+let namesArray = [];
 let ingredientFilter = document.getElementById("ingredients-list");
 
 
 document.addEventListener("DOMContentLoaded", function() {
     // console.log(recipes);
-    
+
+    createNamesList(namesArray);
+    console.log("Liste des noms");
+    console.log(namesArray);
     
     createIngredientsList(ingredientsArray);
     console.log("Liste des ingredients");
@@ -71,6 +75,15 @@ function createAppliancesList (applianceArrayToAgregate) {
         let appliance= recipes[n].appliance;
         if(!applianceArrayToAgregate.includes(appliance)) {
             applianceArrayToAgregate.push(appliance);
+        }
+    }
+}
+
+function createNamesList (nameArrayToAgregate) {
+    for (let i=0; i<recipes.length; i+1) {
+        let name=recipes[i].name;
+        if(!nameArrayToAgregate.includes(name)) {
+            nameArrayToAgregate.push(name);
         }
     }
 }
