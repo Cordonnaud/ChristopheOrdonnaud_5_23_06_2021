@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // console.log(recipes);
 
     createNamesList(namesArray);
-    console.log("Liste des noms");
+    console.log("Liste des noms de recette");
     console.log(namesArray);
     
     createIngredientsList(ingredientsArray);
@@ -85,8 +85,8 @@ function createAppliancesList (applianceArrayToAgregate) {
 }
 
 function createNamesList (nameArrayToAgregate) {
-    for (let i=0; i<recipes.length; i+1) {
-        let name=recipes[i].name;
+    for (var i=0; i<recipes.length; i++) {
+        var name = recipes[i].name;
         if(!nameArrayToAgregate.includes(name)) {
             nameArrayToAgregate.push(name);
         }
@@ -94,8 +94,8 @@ function createNamesList (nameArrayToAgregate) {
 }
 
 function createDescriptionsList (descriptionArrayToAgregate) {
-    for (let i=0; i<recipes.length; i+1) {
-        let description=recipes[i].description;
+    for (var i=0; i<recipes.length; i++) {
+        var description=recipes[i].description;
         if(!descriptionArrayToAgregate.includes(description)) {
             descriptionArrayToAgregate.push(description);
         }
