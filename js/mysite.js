@@ -2,7 +2,8 @@ let ingredientsArray = [];
 let appliancesArray = [];
 let ustensilsArray = [];
 let namesArray = [];
-let ingredientFilter = document.getElementById("ingredients-list");
+let descriptionsArray = []
+// let ingredientFilter = document.getElementById("ingredients-list");
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -23,6 +24,10 @@ document.addEventListener("DOMContentLoaded", function() {
     createUstensilesList(ustensilsArray);
     console.log("Liste des ustensils");
     console.log(ustensilsArray);
+
+    createDescriptionsList(descriptionsArray);
+    console.log("Liste des descriptions");
+    console.log(descriptionsArray);
 
     let searchBarInput = document.getElementById("searchbar");
     searchBarInput.addEventListener("change", function(event) {
@@ -88,6 +93,15 @@ function createNamesList (nameArrayToAgregate) {
     }
 }
 
+function createDescriptionsList (descriptionArrayToAgregate) {
+    for (let i=0; i<recipes.length; i+1) {
+        let description=recipes[i].description;
+        if(!descriptionArrayToAgregate.includes(description)) {
+            descriptionArrayToAgregate.push(description);
+        }
+    }
+}
+
 // Récuperer les donner de searchBar
 let searchBarInput = document.getElementById("searchbar");
 // tableaux des filtres en cft de searchBarInput
@@ -99,35 +113,35 @@ let searchingIngredients =[];
 // console.log(searchingApplances);
 
 // lire le contenu de searchBar
-searchBarInput.addEventListener("change", function(event) {
-    let searchText = event.target.value; // la variable SearchText = valeur de la cible (ici le texte documenté dans searchBar)
-    // console.log(searchText);
-    if(searchText !== "") {
-        if(searchText.length >3) {// si le nb de caractere du texte est sup à 3
-            let searchValue = searchText.toLowerCase(); // la variable SearchValue = le texte en minuscule
-            console.log(searchValue);
-            if(searchValue.indexOf(" ") != -1) { // si le texte en minuscule comprend des espaces
-                let searchArray = searchValue.split(" "); // la variable searchArray = séparer searchValue sur le caractere "espace"
-                console.log("Tableau de recherche par mot");
-                console.log(searchArray);
-                for(let i = 0 ; i < searchArray.length; i++) {
-                    let word= searchArray[i]; // la variable word = le tableau des mot recherchés
-                    // console.log(word);
-                    for(let j=0; j<ingredientsArray.length - 1; j++) {
-                        let ingredient = ingredientsArray[j].toLowerCase();
-                        // console.log(ingredient);
-                        if(ingredient.includes(word)) {
-                            searchingIngredient.push(j);
-                        }
-                    }
-                }
-                console.log("Ingredients recherchés")
-                console.log(searchingIngredients);
-            }
-        }
-    }
-});
-
+// searchBarInput.addEventListener("change", function(event) {
+//     let searchText = event.target.value; // la variable SearchText = valeur de la cible (ici le texte documenté dans searchBar)
+//     // console.log(searchText);
+//     if(searchText !== "") {
+//         if(searchText.length >3) {// si le nb de caractere du texte est sup à 3
+//             let searchValue = searchText.toLowerCase(); // la variable SearchValue = le texte en minuscule
+//             console.log(searchValue);
+//             if(searchValue.indexOf(" ") != -1) { // si le texte en minuscule comprend des espaces
+//                 let searchArray = searchValue.split(" "); // la variable searchArray = séparer searchValue sur le caractere "espace"
+//                 console.log("Tableau de recherche par mot");
+//                 console.log(searchArray);
+//                 for(let i = 0 ; i < searchArray.length; i++) {
+//                     let word= searchArray[i]; // la variable word = le tableau des mot recherchés
+//                     // console.log(word);
+//                     for(let j=0; j<ingredientsArray.length - 1; j++) {
+//                         let ingredient = ingredientsArray[j].toLowerCase();
+//                         // console.log(ingredient);
+//                         if(ingredient.includes(word)) {
+//                             searchingIngredient.push(j);
+//                         }
+//                     }
+//                 }
+//                 console.log("Ingredients recherchés")
+//                 console.log(searchingIngredients);
+//             }
+//         }
+//     }
+// });
+// 
 // Ajout tableau dans le filtre ingrédients
 // let ingredientFilter = document.getElementById('ingredients_list');
 // var ingredientListHtml = document.createElement('ul');
