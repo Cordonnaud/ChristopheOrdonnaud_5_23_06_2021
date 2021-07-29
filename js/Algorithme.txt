@@ -24,11 +24,10 @@ PROBLEMATIQUES
 -----------------------------------------------------------------------------------------------
 1.
 ==> récuperer la donnée documentée dans la barre de recherche
-==> lire les caracteres documentés dans la barre de recherche 
-==> etablir un tableau de mot en fonction de la donnée d'entrée si le nb de caractères superieur ou égale à 3 
-==> configurer la variable d'entrée pour:
-    - que les caracteres soit retournés en minuscule
-    - que les espaces soient pris en compte 
+==> lire la saisie de l'utilisateur dans la barre de recherche 
+==> créer un tableau de mot clef en fonction du nb de caractères superieur ou égale à 3 saisie par l'utilisateur
+    => séparer les mots par un espace et un apostrophe.
+
 
 
 -----------------------------------------------------------------------------------------------
@@ -49,16 +48,16 @@ le fichier "Recipes" en source de données, établi sous forme de tableau (compo
 
 Je vais chercher à exploiter ce fichier comme suit :
 
-==> récuperer les données du fichier Recipes dans un tableauRecette
-==> lire les données de chaque item du "tableauRecette" 
+==> récuperer les données de fichier Recipes
+==> lire les données de chaque item de recipes
 
-    -a- le nom de la recette (listeNomRecette)
-        ==> lire le contenu de tableauRecette
-        ==> établir une listeNomRecette à partir du tableauRecette/"name" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
+    -a- le nom de la recette (tableauNomRecette)
+        ==> lire le contenu de recipes
+        ==> établir une listeNomRecette à partir du recipes/"name" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
     
     -b- les ingrédients 
-        ==> lire le contenu de tableauRecette 
-        ==> établir un tableauIngredientsRecette à partir du tableauRecette/"ingredients" 
+        ==> lire le contenu recipes 
+        ==> établir un tableauIngredientsRecette à partir du recipes/"ingredients" 
         -b-1- les ingrédients (tableauIngredient)
             ==> lire le contenu de tableauIngredientsRecette
             ==> établir un tableauIngredient à partir de tableauIngredientsRecette/"ingredient" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
@@ -71,21 +70,19 @@ Je vais chercher à exploiter ce fichier comme suit :
         
 
 
-    -c- description de la recette (tableauDescription)
-        ==> lire le contenu de tableauRecette
-        ==> établir un tableauDescription à partir de tableauRecette/"description"
+    -c- description recette (tableauDescriptionRecette)
+        ==> lire le contenu de recipes
+        ==> établir un tableauDescriptionRecette à partir de recipes/"description" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
 
     -d- appareils utilisés (listeAppareil)
-        ==> lire le contenu de tableauRecette
-        ==> établir une listeAppareil à partir de tableauRecette/"appliance" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
+        ==> lire le contenu de recipes
+        ==> établir une listeAppareil à partir de recipes/"appliance" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
 
     -e- ustensiles utilisés (tableauUstensiles) 
-        ==> lire le contenu de tableauRecette
-        ==> établir un tableauUstensiles à partir de tableauRecette/"ustensils" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
+        ==> lire le contenu de recipes
+        ==> établir un tableauUstensiles à partir de recipes/"ustensils" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
     
-    -f- description recette (tableauDescriptionRecette)
-        ==> lire le contenu de tableauRecette
-        ==> établir un tableauDescriptionRecette à partir de tableauRecette/"description" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
+   
 
 
 Une fois les listes et tableaux definis, je dois mettre en correspondance le/les mots clefs avec les tableaux/listes définis précédemment. Ainsi: pour chaque mot clef entrée dans la barre de recherche je procède comme suit:
