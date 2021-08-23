@@ -82,7 +82,9 @@ Je vais chercher à exploiter ce fichier comme suit :
         ==> lire le contenu de recipes
         ==> établir un tableauUstensiles à partir de recipes/"ustensils" en ayant configurer les noms pour qu'ils soient en minuscule et tiennent compte des espaces
     
-   
+  Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractère :
+    ne comptabiliser que les mot superieur ou égal à 3
+    ne pas prendre en compte les caractères "ê" et "î"
 
 
 Une fois les listes et tableaux definis, je dois mettre en correspondance le/les mots clefs avec les tableaux/listes définis précédemment. Ainsi: pour chaque mot clef entrée dans la barre de recherche je procède comme suit:

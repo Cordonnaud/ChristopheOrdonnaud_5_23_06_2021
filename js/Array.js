@@ -1,66 +1,3 @@
-let searchBar = document.getElementById("searchbar");
-
-// Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractère
-searchBar.addEventListener("input", function() {
-    // console.log(searchBar.value);
-    if(searchBar.value.length >= 3) {
-        var keyWords= searchBar.value.toLowerCase();
-        keyWords=keyWords.replace(/'/g," ");
-        keyWords=keyWords.replace(/ê/g,"è");
-        keyWords=keyWords.replace(/î/g,"i");
-        if(keyWords.includes(" ")) {
-            var keyWordSplit=keyWords.split(" ");
-            console.log(keyWordSplit);
-            for(var i=0; i<keyWordSplit.length; i++){
-                var keyWord = keyWordSplit[i];
-                console.log(keyWord);
-                if(keyWord.length>3){
-                    keyLongWord=keyWord;
-                    var keyWordArray =[]
-                    if(!keyWordArray.includes(keyLongWord)){
-                        keyWordArray.push(keyLongWord);}
-                }
-
-
-                
-            }console.log(keyWordArray);
-        }
-    }
-});
-// let searchBarInput = document.getElementById("searchbar"); 
-//     let searchingIngredients = []; VARIABLE TABLEAU DE RECHERCHE
-//     searchBarInput.addEventListener("change", function(event) { 
-//         let searchText = event.target.value; SAISIE UNTILISATEUR
-//         if(searchText !== "") { 
-//             if(searchText.length > 3) { 
-//                 var searchValue = searchText.toLowerCase(); 
-//                 if(searchValue.indexOf(" ") != -1) { 
-//                     var searchArray = searchValue.split(" "); 
-//                     for(var i = 0; i < searchArray.length; i++) { 
-//                         var word = searchArray[i]; 
-//                         if(word.length > 2) { 
-//                             for(var j = 0; j < ingredientsArray.length - 1; j++) { 
-//                                 var ingredient = ingredientsArray[j].toLowerCase(); 
-//                                 if(ingredient.indexOf(" ") != -1) { 
-//                                     var ingredientWords = ingredient.split(" "); 
-//                                     for(var k = 0; k < ingredientWords.length; k++) { 
-//                                         var ingredientWord = ingredientWords[k]; 
-//                                         if(ingredientWord === word) { 
-//                                             searchingIngredients.push(j); 
-//                                         } 
-//                                     } 
-//                                 } else { 
-//                                     if(ingredient === word) { 
-//                                         searchingIngredients.push(j); 
-//                                     } 
-//                                 } 
-//                             } 
-//                         }                        
-//                     } 
-
-// poulet à l'ail braisé à la réunionnaise
-// POULET A L'AIL BRAISE A LA REUNIONNAISE
-
 
 // console.log(recipes);
 let recipeArray= [];
@@ -105,7 +42,10 @@ let tableauUstensil=[];
 for(var index=0; index< recipes.length; index++) {
     tableauItemUstensils= recipes[index].ustensils;
     for(i=0; i<tableauItemUstensils.length; i++) {
-        let ustensil=tableauItemUstensils[i];
+        let ustensilItem=tableauItemUstensils[i];
+        let ustensil= ustensilItem.toLowerCase();
+        ustensil=ustensil.replace(/ê/g,"è");
+        ustensil=ustensil.replace(/î/g,"i");
         if(!tableauUstensil.includes(ustensil)){
             tableauUstensil.push(ustensil);
         }
@@ -127,4 +67,40 @@ for(var index=0; index< recipes.length; index++) {
 }
 console.log("Appareils");
 console.log(tableauAppareil);
+
+let searchBar = document.getElementById("searchbar");
+
+// Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractère
+let tableauKeyWordArray =[];
+searchBar.addEventListener("change", function() {
+    // console.log(searchBar.value);
+    if(searchBar.value.length >= 3) {
+        var keyWords= searchBar.value.toLowerCase();
+        keyWords=keyWords.replace(/'/g," ");
+        keyWords=keyWords.replace(/ê/g,"è");
+        keyWords=keyWords.replace(/î/g,"i");
+        if(keyWords.includes(" ")) {
+            var keyWordSplit=keyWords.split(" ");
+            console.log(keyWordSplit);
+            for(var i=0; i<keyWordSplit.length; i++){
+                var keyWord = keyWordSplit[i];
+                // console.log(keyWord);
+                if(keyWord.length>=3){
+                    keyLongWord=keyWord;
+                    console.log(keyLongWord);
+                    if(!tableauKeyWordArray.includes(keyLongWord)){
+                        tableauKeyWordArray.push(keyLongWord);
+                    }
+                }
+            }
+        }
+    }
+    console.log ("Tableau de mots clés");
+    console.log(tableauKeyWordArray);
+});
+
+// poulet à l'ail braisé à la réunionnaise
+// POULET A L'AIL BRAISE A LA REUNIONNAISE
+
+
 
