@@ -1,20 +1,24 @@
 
 document.addEventListener("DOMContentLoaded", function() {    
-    // console.log(recipes);
+    console.log(recipes);
+    // CALL RECIPE FOR HTML
+    // showRecipes(recipes);
+    // RECIPE RESULT TO BE SHOWN
+    
 
     // Etablir un tableau des noms de recettes
     var recipeArray= [];
     for(var i=0; i< recipes.length; i++) {
-        var recipe=recipes[i].name;
-        if(!recipeArray.includes(recipe)){
-            recipeArray.push(recipe);
+        var recipeName=recipes[i].name;
+        if(!recipeArray.includes(recipeName)){
+            recipeArray.push(recipeName);
         }
     }
-    console.log("Tableau des Noms de Recette");
-    console.log(recipeArray);
+    // console.log("Tableau des Noms de Recette");
+    // console.log(recipeArray);
 
     //  Etablir un tableau des Ingredients
-    let ingredientsArray=[];
+    var ingredientsArray=[];
     var ingredientWordList=[];
     for(var i=0; i< recipes.length; i++) {
         var itemIngredientsArray= recipes[i].ingredients;
@@ -31,32 +35,36 @@ document.addEventListener("DOMContentLoaded", function() {
             }
             var ingredientWord=ingredient.split(" ");
             // console.log(ingredientWord);
-            if(!ingredientWordList.includes(ingredientWord)) {
-                ingredientWordList.push (ingredientWord);
-            }
+            for( k=0; k<ingredientWord.length; k++) {
+                var word= ingredientWord[k];
+                if(!ingredientWordList.includes(word)) {
+                    ingredientWordList.push (word);
+                }
+            }          
+            
         }
     }
-    console.log("Tableau des Ingredients");
-    console.log(ingredientsArray);
+    // console.log("Tableau des Ingredients");
+    // console.log(ingredientsArray);
 
-    console.log("Liste des Ingredients");
-    console.log(ingredientsArray);
+    // console.log("Liste des Ingredients");
+    // console.log(ingredientWordList);
 
    
 
     //  Etablir un tableau des Descriptions
-    let descriptionArray=[];
+    var descriptionArray=[];
     for(var i=0; i< recipes.length; i++) {
         var description=recipes[i].description;
         if(!descriptionArray.includes(description)){
             descriptionArray.push(description);
         }
     }
-    console.log("tableau des Descriptions");
-    console.log(descriptionArray);
+    // console.log("tableau des Descriptions");
+    // console.log(descriptionArray);
 
     //  Etablir un tableau des Ustensiles
-    let ustensilArray=[];
+    var ustensilArray=[];
     for(var i=0; i< recipes.length; i++) {
         var itemUstensilsArray= recipes[i].ustensils;
         for(j=0; j<itemUstensilsArray.length; j++) {
@@ -72,11 +80,11 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-    console.log("Tableau des Ustensils");
-    console.log(ustensilArray);
+    // console.log("Tableau des Ustensils");
+    // console.log(ustensilArray);
 
     //  Etablir un tableau des Appareils
-    let appareilArray=[];
+    var appareilArray=[];
     for(var i=0; i< recipes.length; i++) {
         var appareilBrut= recipes[i].appliance;
         var appareil= appareilBrut.toLowerCase();
@@ -88,8 +96,8 @@ document.addEventListener("DOMContentLoaded", function() {
             appareilArray.push(appareil);
         }
     }
-    console.log("Tableau des Appareils");
-    console.log(appareilArray);
+    // console.log("Tableau des Appareils");
+    // console.log(appareilArray);
 
     console.log ("-------------------------------------------------");
 // Algo  de recherhce par ingredient sur la barre de recherche
@@ -105,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var searchResultArrayFromDescriptionRecipe = [];
     var resultForSearchDescription = [];
 
-    let searchBar = document.getElementById("searchbar");
+    var searchBar = document.getElementById("searchbar");
 
     searchBar.addEventListener('change', function(event) {
         // console.log(searchBar.value);
@@ -113,6 +121,8 @@ document.addEventListener("DOMContentLoaded", function() {
         // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères
 
         var keyWordsArray =[];
+        var ingredientInResearchArray = [];
+
         if(searchBar.value.length >= 3) {
             var keyWords= searchBar.value.toLowerCase();
             keyWords=keyWords.replace(/'/g," ");
@@ -122,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function() {
             keyWords=keyWords.replace(/ï/g,"i");
             if(keyWords.includes(" ")) {
                 var keyWordSplit=keyWords.split(" ");
+                var ingredientsFind =[]
                 // console.log(keyWordSplit);
                 for(var i=0; i<keyWordSplit.length; i++){
                     var keyWord = keyWordSplit[i];
@@ -132,63 +143,21 @@ document.addEventListener("DOMContentLoaded", function() {
                         if(!keyWordsArray.includes(keyLongWord)){
                             keyWordsArray.push(keyLongWord);
                         }
-                    }
-                }
-            }
+                       
+                        for (var i = 0; i < ingredientWordList.length; i++) {
+                            var ingredientWordListResearch = ingredientWordList[i];
+                            
+                            if(keyLongWord == ingredientWordListResearch) {
+                                ingredientInResearchArray.push(i);
+                            }
+                            console.log('tableau des résultats');
+                            console.log(ingredientInResearchArray);
+                        }
+                    }// console.log(keyLongWord);
+                    
+                }  // console.log(keyLongWord);
+            } 
         }
-        console.log ("Tableau des mots clés");
-        console.log(keyWordsArray);
-
-
-        // pour chaque valeur d'index du tableau mot clef, verifier si il est présent dans les index des tableau NOMS/INGREDIENT/USTENSILES/APPAREILS/DESCRIPTIONS
-        // if(keyLongWord.length > 2) {
-        //     for (var j = 0; j < ingredientsArray.length -1; j++) {
-
-        //         // liste des ingredients des recettes
-        //         let ingredientList = ingredientsArray[j];
-        //         console.log('resultat de recherche');
-        //         console.log(ingredientList);
-
-        //         // indexliste des ingredients connu
-        //         if(ingredientList.indexOf("") != -1) {
-
-        //             // séparation des mots composés de la liste des ingredients en plusieurs mots
-        //             let wordIngredientList = ingredientList.split(" ");
-        //             // console.log('liste des mots spliter');
-        //             // console.log(wordIngredientList);
-
-        //             for (var K = 0; K < wordIngredientList.length; K++) {
-
-        //                 // tableau de liste des mots d'ingredients
-        //                 let ingredientWord = wordIngredientList[K];
-        //                 // console.log('liste de mot de recherche');
-        //                 // console.log(ingredientWord);
-        //                 if(ingredientWord === keyLongWord) {
-        //                     resultForsearchIngredient.push(j);
-        //                     // console.log('tableau de recherche');
-        //                     // console.log(resultForsearchIngredient);
-        //                 }
-        //             }
-        //         }
-        //         else { 
-        //             if(ingredientList === keyLongWord) {
-        //             resultForsearchIngredient.push(j);
-        //             // console.log('tableau de recherche else');
-        //             // console.log(resultForsearchIngredient);
-        //             }
-        //         }
-        //     }
-        //     for (var i = 0; i < resultForsearchIngredient.length; i++) {
-        //         let indexForResultSearchIngredient = resultForsearchIngredient[i];
-        //         // console.log(indexForResultSearchIngredient);
-        //         let ingredientByIndex = ingredientsArray[indexForResultSearchIngredient];
-        //         searchResultArrayFromIngredient.push(ingredientByIndex);                 
-        //     }
-        //     console.log('tableau des ingredients suite à la recherche');
-        //     console.log(searchResultArrayFromIngredient);
-        // }
-        
-        // });
     });
 
 });
