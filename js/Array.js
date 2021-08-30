@@ -139,24 +139,35 @@ document.addEventListener("DOMContentLoaded", function() {
                     //console.log(keyWord);
                     if(keyWord.length>=3){
                         keyLongWord=keyWord;
-                        // console.log(keyLongWord);
+                        console.log(keyLongWord);
                         if(!keyWordsArray.includes(keyLongWord)){
                             keyWordsArray.push(keyLongWord);
                         }
-                       
-                        for (var i = 0; i < ingredientWordList.length; i++) {
-                            var ingredientWordListResearch = ingredientWordList[i];
-                            
-                            if(keyLongWord == ingredientWordListResearch) {
-                                ingredientInResearchArray.push(i);
-                            }
-                            console.log('tableau des résultats');
-                            console.log(ingredientInResearchArray);
-                        }
-                    }// console.log(keyLongWord);
+                    }
+                } 
+                console.log(keyWordsArray);
+                console.log(ingredientWordList);
+
+                // for (var i = 0; i < ingredientWordList.length; i++) {
+                //     var ingredientWordListResearch = ingredientWordList[i];
                     
-                }  // console.log(keyLongWord);
-            } 
+                //     for(var j=0; j<keyWordsArray.length; j++) {
+                //         var keyWordSearch= keyWordsArray[j];
+                //         console.log(keyWordSearch);
+                //     }
+                //     // console.log(ingredientWordListResearch);
+                //     console.log('mots clefs'+' ' + keyWordSearch);
+                //     console.log(' tableau des ingredients ' +' ' + ingredientWordListResearch);
+                //     if(ingredientWordListResearch===keyWordSearch) {
+                //         ingredientsFind.push(j);
+                //     }
+                //     console.log(ingredientWordListResearch);
+                    
+                // }
+                
+                // console.log('tableau des résultats');
+                // console.log(ingredientsFind);
+            }
         }
     });
 
