@@ -1,4 +1,4 @@
-console.log(recipes);
+// console.log(recipes);
 
 // Etablir un tableau des noms de recettes
 createRecipeNameArray();

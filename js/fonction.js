@@ -142,30 +142,35 @@ function createCorrespondantWordArray(){
 
 
 // recherche des recette correspondante aux ingredients
-console.log("recherche des recette correspondante aux ingredients")
+console.log("recherche des recette correspondante aux ingredients");
+recipes.forEach(function(index){
+    console.log (index)
+});
+
+
 function createRecipeFilterArray() {
     for(var i = 0; i < recipes.length - 1; i++) {
         var recipe = recipes[i];
         console.log(recipe);
-        var indexRecipe = recipes.indexOf[i];
-        console.log(indexRecipe);
-        var ingredientsInRecipe = recipe.ingredients;
-        for(var j = 0; j < correspondantWords.length -1; j++) {
-            var resultSearchIngredient = correspondantWords[j];
-            // console.log(resultSearchIngredient)
-            for(var k = 0; k < ingredientsInRecipe.length -1; k++) {
-                var ingredientInRecipe = ingredientsInRecipe[k];
-                console.log(ingredientInRecipe)
+        // var indexRecipe = recipes.indexOf(i);
+        // console.log(indexRecipe);
+        // var ingredientsInRecipe = recipe.ingredients;
+        // for(var j = 0; j < correspondantWords.length -1; j++) {
+        //     var resultSearchIngredient = correspondantWords[j];
+        //     // console.log(resultSearchIngredient)
+        //     for(var k = 0; k < ingredientsInRecipe.length -1; k++) {
+        //         var ingredientInRecipe = ingredientsInRecipe[k];
+        //         console.log(ingredientInRecipe)
                 
-                if(ingredientInRecipe.includes(resultSearchIngredient)) {
-                    var indexOfRecipe=recipe("");
-                    console.log(indexOfRecipe)
-                    // if(!recipeResult.includes(recipe)) {
-                    //     recipeResult.push(recipe);
-                    // }
-                }
-            }
-        }
+        //         if(ingredientInRecipe.includes(resultSearchIngredient)) {
+        //             var indexOfRecipe=recipe("");
+        //             console.log(indexOfRecipe)
+        //             // if(!recipeResult.includes(recipe)) {
+        //             //     recipeResult.push(recipe);
+        //             // }
+        //         }
+        //     }
+        // }
     }
 }
 console.log("===================================================================")
