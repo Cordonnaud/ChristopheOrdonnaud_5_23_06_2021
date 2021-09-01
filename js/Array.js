@@ -1,29 +1,35 @@
 
 document.addEventListener("DOMContentLoaded", function() {    
-    console.log(recipes);
+    // console.log(recipes);
     // CALL RECIPE FOR HTML
     // showRecipes(recipes);
     // RECIPE RESULT TO BE SHOWN
-    
+    var recipeArray= [];
+    var ingredientsArray=[];
+    var ingredientWordList=[];
+    var itemIngredientsArray=[];
+    var descriptionArray=[];
+    var ustensilArray=[];
+    var appareilArray=[];
 
     // Etablir un tableau des noms de recettes
-    var recipeArray= [];
     for(var i=0; i< recipes.length; i++) {
         var recipeName=recipes[i].name;
         if(!recipeArray.includes(recipeName)){
             recipeArray.push(recipeName);
         }
     }
-    // console.log("Tableau des Noms de Recette");
-    // console.log(recipeArray);
+    console.log("Tableau des Noms de Recette");
+    console.log(recipeArray);
+
 
     //  Etablir un tableau des Ingredients
-    var ingredientsArray=[];
-    var ingredientWordList=[];
     for(var i=0; i< recipes.length; i++) {
-        var itemIngredientsArray= recipes[i].ingredients;
+        itemIngredientsArray= recipes[i].ingredients;
+        // console.log(itemIngredientsArray);
        for(var j=0; j < itemIngredientsArray.length; j++){
            var ingredientBrut= itemIngredientsArray[j].ingredient;
+        // console.log(itemIngredientsArray);
            var ingredient= ingredientBrut.toLowerCase();
            ingredient=ingredient.replace(/'/g," ");
            ingredient=ingredient.replace(/ê/g,"e");
@@ -40,12 +46,11 @@ document.addEventListener("DOMContentLoaded", function() {
                 if(!ingredientWordList.includes(word)) {
                     ingredientWordList.push (word);
                 }
-            }          
-            
+            }
         }
     }
-    // console.log("Tableau des Ingredients");
-    // console.log(ingredientsArray);
+    console.log("Tableau des Ingredients");
+    console.log(ingredientsArray);
 
     // console.log("Liste des Ingredients");
     // console.log(ingredientWordList);
@@ -53,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
    
 
     //  Etablir un tableau des Descriptions
-    var descriptionArray=[];
     for(var i=0; i< recipes.length; i++) {
         var description=recipes[i].description;
         if(!descriptionArray.includes(description)){
@@ -64,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function() {
     // console.log(descriptionArray);
 
     //  Etablir un tableau des Ustensiles
-    var ustensilArray=[];
     for(var i=0; i< recipes.length; i++) {
         var itemUstensilsArray= recipes[i].ustensils;
         for(j=0; j<itemUstensilsArray.length; j++) {
@@ -80,11 +83,10 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
     }
-    // console.log("Tableau des Ustensils");
-    // console.log(ustensilArray);
+    console.log("Tableau des Ustensils");
+    console.log(ustensilArray);
 
     //  Etablir un tableau des Appareils
-    var appareilArray=[];
     for(var i=0; i< recipes.length; i++) {
         var appareilBrut= recipes[i].appliance;
         var appareil= appareilBrut.toLowerCase();
@@ -96,22 +98,14 @@ document.addEventListener("DOMContentLoaded", function() {
             appareilArray.push(appareil);
         }
     }
-    // console.log("Tableau des Appareils");
-    // console.log(appareilArray);
+    console.log("Tableau des Appareils");
+    console.log(appareilArray);
 
     console.log ("-------------------------------------------------");
+
 // Algo  de recherhce par ingredient sur la barre de recherche
-    // const centralSearchBar = document.getElementById('searchbar');
+   
     
-
-    var searchResultArrayFromIngredient = [];
-    var resultForsearchIngredient = [];
-
-    var searchResultArrayFromNameRecipe = [];
-    var resultForSearchName = [];
-
-    var searchResultArrayFromDescriptionRecipe = [];
-    var resultForSearchDescription = [];
 
     var searchBar = document.getElementById("searchbar");
 
@@ -121,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function() {
         // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères
 
         var keyWordsArray =[];
-        var ingredientInResearchArray = [];
 
         if(searchBar.value.length >= 3) {
             var keyWords= searchBar.value.toLowerCase();
@@ -132,14 +125,14 @@ document.addEventListener("DOMContentLoaded", function() {
             keyWords=keyWords.replace(/ï/g,"i");
             if(keyWords.includes(" ")) {
                 var keyWordSplit=keyWords.split(" ");
-                var ingredientsFind =[]
+               
                 // console.log(keyWordSplit);
                 for(var i=0; i<keyWordSplit.length; i++){
                     var keyWord = keyWordSplit[i];
                     //console.log(keyWord);
                     if(keyWord.length>=3){
                         keyLongWord=keyWord;
-                        console.log(keyLongWord);
+                        // console.log(keyLongWord);
                         if(!keyWordsArray.includes(keyLongWord)){
                             keyWordsArray.push(keyLongWord);
                         }
@@ -150,30 +143,47 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(keyWordsArray);
         console.log(ingredientWordList);
 
-
+        // recherche d'une correspondance entre les mots cléfs et les mots ingredients
+        
+        var correspondantWords =[]
         for (var i = 0; i < ingredientWordList.length; i++){
             var ingredientWordListResearch = ingredientWordList[i];
+            // console.log("ingredient correspondant : " + ingredientWordListResearch);
             for(var j=0; j<keyWordsArray.length; j++) {
                 var keyWordSearch= keyWordsArray[j];
-                // console.log(keyWordSearch);
+                // console.log("keyWordSearch" + keyWordSearch);
                 if(ingredientWordListResearch==keyWordSearch) {
-                    ingredientsFind.push(keyWordSearch);
+                    correspondantWords.push(ingredientWordListResearch);                    
                 }
-                
+
             }
         }
-        console.log('tableau des résultats');
-        console.log(ingredientsFind);
+        console.log('tableau de correspondance mot clef / ingredient ');
+        console.log(correspondantWords);
 
+        // recherche des recettes contenant les mots correspondantWord
+        // console.log(recipes);
 
-        // console.log(ingredientWordListResearch);
-        // console.log('mots clefs'+' ' + keyWordSearch);
-        // console.log(' tableau des ingredients ' +' ' + ingredientWordListResearch);
-            
-                
         
+        // var correspondantRecipes =[];
+        for(p=0;p<recipes.length; p++){
+            var recipeIngredients=recipes[p].ingredients
+            for(q=0;q<recipeIngredients.length; q++){
+                var ingredientInRecipe= recipeIngredients[q].ingredient;
+                // console.log(ingredientInRecipe);
+                var ingredientCleanInRecipe= ingredientInRecipe.toLowerCase();
+                // console.log(ingredientCleanInRecipe);
+            }
+            // console.log(recipeIngredients);
+            for(j=0; j<correspondantWords.length; j++){
+                var correspondantWord = correspondantWords[j];
+                if(recipeIngredients.includes(correspondantWord)) {
+                    correspondantRecipes.push(recipes)
+                }
+            }
+        }
+        // console.log(correspondantRecipes);
     });
-
 });
 
     
