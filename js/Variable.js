@@ -10,5 +10,6 @@ var appareilArray=[];
 var keyWordsArray =[];
 var correspondantWords =[];
 var recipeFilterArray=[];
+var recipeResult=[]
 
 var searchBar = document.getElementById("searchbar");
