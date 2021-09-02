@@ -61,8 +61,32 @@ searchBar.addEventListener('change', function(event) {
     // createRecipeFilterArray ();
     // console.log(recipeFilterArray)
 
+    // for(i=0; i<ingredientsArray.length -1; i++){
+    // var ingredient=ingredientsArray[i];
+
+    // // console.log(ingredient)
+    // }
     
+    var recipeResult=[]
+    for(var i=0; i< recipes.length -1; i++) {
+        var recipe=recipes[i];
+        var ingredients= recipes[i].ingredients;
+        for(var j=0; j < ingredients.length -1; j++){
+            var ingredientBrut= ingredients[j].ingredient;
+            var ingredient= ingredientBrut.toLowerCase();
+            cleanWordCharactere(ingredient);
+            ingredient=ingredient.replace(/'/g," ");
+            console.log(ingredient);
+            console.log(correspondantWords)
+            if(correspondantWords.includes(ingredient)){
+                recipeResult.push(recipe)
+            }console.log(recipeResult)
+        }
+    }
 });
+
+
+
 
 
     
