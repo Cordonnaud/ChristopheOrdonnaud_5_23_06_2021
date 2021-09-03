@@ -36,6 +36,7 @@ function createIngredientArray(){
            var ingredientBrut= itemIngredientsArray[j].ingredient;
            var ingredient= ingredientBrut.toLowerCase();
            cleanWordCharactere(ingredient);
+
            ingredient=ingredient.replace(/'/g," ");
            if(!ingredientsArray.includes(ingredient)){
                ingredientsArray.push(ingredient);
@@ -116,6 +117,7 @@ function createCorrespondantWordArray(){
             if(ingredientWordListResearch.includes(keyWordSearch)) {
                 correspondantWords.push(ingredientWordListResearch);                    
             }
+            // console.log(correspondantWords)
         }
     }
     for (var i = 0; i < recipeArray.length; i++){
@@ -140,29 +142,35 @@ function createCorrespondantWordArray(){
 
 // Etablir le tableau des Recettes filtrées suivant ingredient filtrés
 function createRecipeResult(){
-    for(var i=0; i< recipes.length -1; i++) {
+    // console.log(correspondantWords)
+    for(var i=0; i< recipes.length; i++) {
         var recipe=recipes[i];
-        var ingredients= recipes[i].ingredients;
-        for(var j=0; j < ingredients.length -1; j++){
+        var ingredients= recipe.ingredients;
+        for(var j=0; j < ingredients.length; j++){
             var ingredientBrut= ingredients[j].ingredient;
             var ingredient= ingredientBrut.toLowerCase();
             cleanWordCharactere(ingredient);
             ingredient=ingredient.replace(/'/g," ");
-            for(k=0; k<correspondantWords.length; k++){
+            // console.log("itest")
+    
+            for(var k=0; k<correspondantWords.length; k++){
                 var elementCor=correspondantWords[k];
-                if(ingredient.includes(elementCor)){
+                // console.log( "element rechercher" +  elementCor);
+                // console.log( "ingredient issu des recette" +  ingredient)
+               if(ingredient.includes(elementCor)){
+                    // console.log(elementCor)
                     if(!recipeResult.includes(recipe)){
                         recipeResult.push(recipe);
                     }
                 }
             }
         }
-        for(j=0; j<recipes.length -1; j++){
+        for(var j=0; j<recipes.length; j++){
             var recipeName= recipes[i].name;
             var name=recipeName.toLowerCase();
             cleanWordCharactere(name);
             name=name.replace(/'/g," ");
-            for(k=0; k<correspondantWords.length; k++){
+            for(var k=0; k<correspondantWords.length; k++){
                 var elementCor=correspondantWords[k];
                 if(name.includes(elementCor)){
                     if(!recipeResult.includes(recipe)){
@@ -171,12 +179,12 @@ function createRecipeResult(){
                 }
             }
         }
-        for(j=0; j<recipes.length -1; j++){
+        for(var j=0; j<recipes.length; j++){
             var recipeDescript= recipes[i].description;
             var descript=recipeDescript.toLowerCase();
             cleanWordCharactere(descript);
             descript=descript.replace(/'/g," ");
-            for(k=0; k<correspondantWords.length; k++){
+            for(var k=0; k<correspondantWords.length; k++){
                 var elementCor=correspondantWords[k];
                 if(descript.includes(elementCor)){
                     if(!recipeResult.includes(recipe)){
@@ -187,3 +195,105 @@ function createRecipeResult(){
         }
     }
 }
+
+// SHOW RECIPES IN HTML
+function showRecipes(recipes) {
+    
+    var recipeList = document.getElementById("recipes-list");
+    recipeList.innerHTML = "";
+
+    for(var i = 0; i < recipes.length; i++) {
+
+        var recipe = recipes[i];
+
+        var recipeCard = document.createElement("div");
+        recipeCard.className = "cards col-4";
+    
+        var recipeCardImgTop = document.createElement("p");
+        recipeCardImgTop.classList.add("card-img-top");
+        recipeCard.appendChild(recipeCardImgTop);
+    
+        var recipeCardBody = document.createElement("div");
+        recipeCardBody.classList.add("card-body");
+    
+        var recipeCardPart1 = document.createElement("div");
+        recipeCardPart1.classList.add("part1");
+    
+        var recipeCardPart1H3 = document.createElement("h3");
+        recipeCardPart1H3.classList.add("title_card");
+        recipeCardPart1H3.textContent = recipe.name;
+        recipeCardPart1.appendChild(recipeCardPart1H3);
+    
+        var recipeCardPart1Timing = document.createElement("div");
+        recipeCardPart1Timing.classList.add("timing");
+        
+        var recipeCardPart1TimingI = document.createElement("i");
+        recipeCardPart1TimingI.className = "far fa-clock";
+        recipeCardPart1Timing.appendChild(recipeCardPart1TimingI);
+    
+        var recipeCardPart1TimingTime = document.createElement("p");
+        recipeCardPart1TimingTime.classList.add("time");
+        recipeCardPart1TimingTime.textContent = recipe.time + " min";
+        recipeCardPart1Timing.appendChild(recipeCardPart1TimingTime);
+    
+        recipeCardPart1.appendChild(recipeCardPart1Timing);
+    
+        recipeCardBody.appendChild(recipeCardPart1);
+    
+        var recipeCardPart2 = document.createElement("div");
+        recipeCardPart2.classList.add("part2");
+    
+        var recipeCardPart2Listing = document.createElement("div");
+        recipeCardPart2Listing.classList.add("listing");
+
+        for(var j = 0; j < recipe.ingredients.length; j++) {
+            var ingredientInRecipe = recipe.ingredients[j];
+
+            var recipeIngredientI = document.createElement("i");
+            var recipeIngredientIStrong = document.createElement("strong");
+            recipeIngredientIStrong.textContent = ingredientInRecipe.ingredient + " :";
+            recipeIngredientI.appendChild(recipeIngredientIStrong);
+
+            var quantityAndUnit = "";
+
+            if(ingredientInRecipe.quantity) {
+                if(ingredientInRecipe.unit) {
+                    quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientInRecipe.unit;
+                }
+                if(ingredientInRecipe.unite) {
+                    quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientInRecipe.unite;
+                }
+                
+            }
+            if(ingredientInRecipe.quantite) {
+                if(ingredientInRecipe.unit) {
+                    quantityAndUnit = " " + ingredientInRecipe.quantite + " " + ingredientInRecipe.unit;
+                }
+                if(ingredientInRecipe.unite) {
+                    quantityAndUnit = " " + ingredientInRecipe.quantite + " " + ingredientInRecipe.unite;
+                }
+            }
+            recipeIngredientI.append(quantityAndUnit);
+            var recipeIngredientLineBreak = document.createElement("br");
+            recipeCardPart2Listing.appendChild(recipeIngredientI);
+            recipeCardPart2Listing.appendChild(recipeIngredientLineBreak);
+        }
+    
+        recipeCardPart2.appendChild(recipeCardPart2Listing);
+    
+        var recipeCardPart2Description = document.createElement("p");
+        recipeCardPart2Description.classList.add("description");
+        recipeCardPart2Description.textContent = recipe.description;
+    
+        recipeCardPart2.appendChild(recipeCardPart2Description);
+    
+        recipeCardBody.appendChild(recipeCardPart2);
+
+        recipeCard.appendChild(recipeCardBody);
+
+        recipeList.appendChild(recipeCard);
+    }
+}
+
+
+

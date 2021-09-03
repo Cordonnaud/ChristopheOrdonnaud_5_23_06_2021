@@ -37,12 +37,12 @@ createApplianceArray();
 
 // Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
 searchBar.addEventListener('change', function(event) {
-    console.log(searchBar.value);
+    // console.log(searchBar.value);
 
 
     // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères
     createKeyWordsArray();
-    console.log(keyWordsArray);
+    // console.log(keyWordsArray);
 
     // recherche d'une correspondance entre les mots cléfs et les mots ingredients
     createCorrespondantWordArray();
@@ -50,12 +50,24 @@ searchBar.addEventListener('change', function(event) {
     // console.log(correspondantWords);
     // console.log(correspondantWords.sort());
 
-    
+    // console.log(correspondantWords);
     // Etablir le tableau des Recettes filtrées suivant ingredient filtrés
     createRecipeResult();
     console.log("Tableau des recette filtrées")
     console.log(recipeResult)
-    
+
+    // alimenter le filtre Ingredient
+ 
+    // for(var i=0; i< recipeResult.length -1; i++) {
+    //     var recipe=recipeResult[i];
+    //     var ingredients= recipeResult[i].ingredients;
+    //     for(var j=0; j < ingredients.length -1; j++){
+    //         var ingredient= ingredients[j].ingredient;
+    //         if(!ingredientsFilterArray.includes(ingredient)){
+    //             ingredientsFilterArray.push(ingredient);
+    //         }console.log(ingredientsFilterArray)
+    //     }
+    // }
 });
 
 

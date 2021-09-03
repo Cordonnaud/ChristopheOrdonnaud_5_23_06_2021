@@ -11,5 +11,8 @@ var keyWordsArray =[];
 var correspondantWords =[];
 var recipeFilterArray=[];
 var recipeResult=[]
+var ingredientsFilterArray=[];
+var appliancesFilterArray=[];
+var ustensilsFilterArray=[];
 
 var searchBar = document.getElementById("searchbar");
