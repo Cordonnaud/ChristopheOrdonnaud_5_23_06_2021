@@ -198,6 +198,7 @@ function createRecipeResult(){
 
 // SHOW RECIPES IN HTML
 function showRecipes(recipes) {
+    // console.log(recipes)
     
     var recipeList = document.getElementById("recipes-list");
     recipeList.innerHTML = "";
@@ -205,49 +206,81 @@ function showRecipes(recipes) {
     for(var i = 0; i < recipes.length; i++) {
 
         var recipe = recipes[i];
+        
 
         var recipeCard = document.createElement("div");
-        recipeCard.className = "cards col-4";
-    
-        var recipeCardImgTop = document.createElement("p");
-        recipeCardImgTop.classList.add("card-img-top");
-        recipeCard.appendChild(recipeCardImgTop);
-    
+        recipeCard.className = "row";
+        
+
+        var recipeCard1 = document.createElement("div");
+        recipeCard1.className = "col-12 col-lg-4 mb-3";
+        recipeCard1.id = "recipe";
+        recipeCard.appendChild(recipeCard1);
+
+        var recipeCardLink = document.createElement("div");
+        recipeCardLink.classList.add("card");
+        recipeCardLink.id = "link";
+        recipeCard1.appendChild(recipeCardLink)
+
+        var recipeCardImg = document.createElement("img");
+        recipeCardImg.classList = "card-img-top ";
+        recipeCardImg.id = "card_img";
+        recipeCardLink.appendChild(recipeCardImg);
+
         var recipeCardBody = document.createElement("div");
         recipeCardBody.classList.add("card-body");
-    
-        var recipeCardPart1 = document.createElement("div");
-        recipeCardPart1.classList.add("part1");
-    
-        var recipeCardPart1H3 = document.createElement("h3");
-        recipeCardPart1H3.classList.add("title_card");
-        recipeCardPart1H3.textContent = recipe.name;
-        recipeCardPart1.appendChild(recipeCardPart1H3);
-    
-        var recipeCardPart1Timing = document.createElement("div");
-        recipeCardPart1Timing.classList.add("timing");
+        recipeCardLink.appendChild(recipeCardBody);
+
+            //  zone de texte
+        var recipeCardText = document.createElement ("div");
+        recipeCardText.classList.add("card-text");
+        recipeCardBody.appendChild(recipeCardText)
+
+            // titre
+        var recipeCardTitle = document.createElement("div");
+        recipeCardTitle.className= "card-title info-card" ;
+        recipeCardTitle.id = "title";
+        recipeCardTitle.textContent = recipe.name;
+        recipeCardBody.appendChild(recipeCardTitle);
+
+            //  icone + timer
+        var recipeCardTime = document.createElement("div");
+        recipeCardTime.className= "time_area info-card" ;
+        recipeCardTime.id = "time";
         
-        var recipeCardPart1TimingI = document.createElement("i");
-        recipeCardPart1TimingI.className = "far fa-clock";
-        recipeCardPart1Timing.appendChild(recipeCardPart1TimingI);
-    
-        var recipeCardPart1TimingTime = document.createElement("p");
-        recipeCardPart1TimingTime.classList.add("time");
-        recipeCardPart1TimingTime.textContent = recipe.time + " min";
-        recipeCardPart1Timing.appendChild(recipeCardPart1TimingTime);
-    
-        recipeCardPart1.appendChild(recipeCardPart1Timing);
-    
-        recipeCardBody.appendChild(recipeCardPart1);
-    
-        var recipeCardPart2 = document.createElement("div");
-        recipeCardPart2.classList.add("part2");
-    
-        var recipeCardPart2Listing = document.createElement("div");
-        recipeCardPart2Listing.classList.add("listing");
+        var recipeCardIconTime= document.createElement( "i");
+        recipeCardIconTime.className ="bi bi-clock icon-large";
+        recipeCardIconTime.id = "icon_time"
+        recipeCardTime.appendChild(recipeCardIconTime);
+
+        var recipeCardTimer = document.createElement("p");
+        recipeCardTimer.classList.add("timer");
+        recipeCardTimer.id = "timer";
+        recipeCardTimer.textContent = recipe.time + "min";
+        recipeCardTime.appendChild(recipeCardTimer);
+
+            // ingredients
+        var recipeCardIngredients = document.createElement("div");
+        recipeCardIngredients.className = "ingredients_area info-card";
+        recipeCardIngredients.id = "ingredients"
+
+        var recipeCardIngred = document.createElement("div");
+        recipeCardIngred.classList.add("ingredient_of_recipe") 
+        recipeCardIngred.id = "ingredient_of_recipe";
+        recipeCardIngred.textContent = recipeIngredientIStrong
+        console.log("texte de Ingredient en gras" +  recipeCardIngred.textContent)
+        recipeCardIngredients.appendChild(recipeCardIngred);
+
+        var recipeCardQuantity = document.createElement("div");
+        recipeCardQuantity.classList.add("quantity");
+        recipeCardQuantity.id ="quantity";
+        recipeCardQuantity.textContent = quantityAndUnit
+        console.log("texte de recipeCardQuantity" + recipeCardQuantity.textContent)
+        recipeCardIngredients.appendChild(recipeCardQuantity);
 
         for(var j = 0; j < recipe.ingredients.length; j++) {
             var ingredientInRecipe = recipe.ingredients[j];
+            // console.log(ingredientInRecipe.ingredient)
 
             var recipeIngredientI = document.createElement("i");
             var recipeIngredientIStrong = document.createElement("strong");
@@ -274,26 +307,104 @@ function showRecipes(recipes) {
                 }
             }
             recipeIngredientI.append(quantityAndUnit);
-            var recipeIngredientLineBreak = document.createElement("br");
-            recipeCardPart2Listing.appendChild(recipeIngredientI);
-            recipeCardPart2Listing.appendChild(recipeIngredientLineBreak);
+            // var recipeIngredientLineBreak = document.createElement("br");
+            // recipeCardPart2Listing.appendChild(recipeIngredientI);
+            // recipeCardPart2Listing.appendChild(recipeIngredientLineBreak);
         }
-    
-        recipeCardPart2.appendChild(recipeCardPart2Listing);
-    
-        var recipeCardPart2Description = document.createElement("p");
-        recipeCardPart2Description.classList.add("description");
-        recipeCardPart2Description.textContent = recipe.description;
-    
-        recipeCardPart2.appendChild(recipeCardPart2Description);
-    
-        recipeCardBody.appendChild(recipeCardPart2);
+        // console.log("OK")
 
-        recipeCard.appendChild(recipeCardBody);
 
-        recipeList.appendChild(recipeCard);
+
+
+            //Description
+        var recipeCardDescription = document.createElement("div");
+        recipeCardDescription.className = "description_area info-card";
+        recipeCardDescription.id = "description";
+        recipeCardDescription.textContent = recipe.description;
+        console.log("Enoncé de la description : " + recipeCardDescription.textContent)
+
+        
+        
+
+
+
+        
+
+        //     var recipeCardPart1 = document.createElement("div");
+        //     recipeCardPart1.classList.add("part1");
+    
+        //     var recipeCardPart1H3 = document.createElement("h3");
+        //     recipeCardPart1H3.classList.add("title_card");
+        //     recipeCardPart1H3.textContent = recipe.name;
+        //     recipeCardPart1.appendChild(recipeCardPart1H3);
+    
+        //     var recipeCardPart1Timing = document.createElement("div");
+        //     recipeCardPart1Timing.classList.add("timing");
+        
+        //     var recipeCardPart1TimingI = document.createElement("i");
+        //     recipeCardPart1TimingI.className = "far fa-clock";
+        //     recipeCardPart1Timing.appendChild(recipeCardPart1TimingI);
+    
+        //     var recipeCardPart1TimingTime = document.createElement("p");
+        //     recipeCardPart1TimingTime.classList.add("time");
+        //     recipeCardPart1TimingTime.textContent = recipe.time + " min";
+        //     recipeCardPart1Timing.appendChild(recipeCardPart1TimingTime);
+    
+        //     recipeCardPart1.appendChild(recipeCardPart1Timing);
+    
+        //     recipeCardBody.appendChild(recipeCardPart1);
+    
+    //     var recipeCardPart2 = document.createElement("div");
+    //     recipeCardPart2.classList.add("part2");
+    
+    //     var recipeCardPart2Listing = document.createElement("div");
+    //     recipeCardPart2Listing.classList.add("listing");
+
+    //     for(var j = 0; j < recipe.ingredients.length; j++) {
+    //         var ingredientInRecipe = recipe.ingredients[j];
+
+    //         var recipeIngredientI = document.createElement("i");
+    //         var recipeIngredientIStrong = document.createElement("strong");
+    //         recipeIngredientIStrong.textContent = ingredientInRecipe.ingredient + " :";
+    //         recipeIngredientI.appendChild(recipeIngredientIStrong);
+
+    //         var quantityAndUnit = "";
+
+    //         if(ingredientInRecipe.quantity) {
+    //             if(ingredientInRecipe.unit) {
+    //                 quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientInRecipe.unit;
+    //             }
+    //             if(ingredientInRecipe.unite) {
+    //                 quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientInRecipe.unite;
+    //             }
+                
+    //         }
+    //         if(ingredientInRecipe.quantite) {
+    //             if(ingredientInRecipe.unit) {
+    //                 quantityAndUnit = " " + ingredientInRecipe.quantite + " " + ingredientInRecipe.unit;
+    //             }
+    //             if(ingredientInRecipe.unite) {
+    //                 quantityAndUnit = " " + ingredientInRecipe.quantite + " " + ingredientInRecipe.unite;
+    //             }
+    //         }
+    //         recipeIngredientI.append(quantityAndUnit);
+    //         var recipeIngredientLineBreak = document.createElement("br");
+    //         recipeCardPart2Listing.appendChild(recipeIngredientI);
+    //         recipeCardPart2Listing.appendChild(recipeIngredientLineBreak);
+    //     }
+    
+    //     recipeCardPart2.appendChild(recipeCardPart2Listing);
+    
+    //     var recipeCardPart2Description = document.createElement("p");
+    //     recipeCardPart2Description.classList.add("description");
+    //     recipeCardPart2Description.textContent = recipe.description;
+    
+    //     recipeCardPart2.appendChild(recipeCardPart2Description);
+    
+    //     recipeCardBody.appendChild(recipeCardPart2);
+
+    //     recipeCard.appendChild(recipeCardBody);
+
+    //     recipeList.appendChild(recipeCard);
     }
 }
-
-
-

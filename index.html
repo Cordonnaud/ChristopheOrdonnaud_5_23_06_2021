@@ -63,47 +63,31 @@
 
         </div>
 
+        <!-- <div class="row ">
+          
+        </div> -->
 
-        <div class="row ">
-            <div class="col-12 col-lg-4 mb-3" id= "recipes-list">
-              <div class="card"><a href="#"></a>
-                <img src="#" alt="Photo de la recette" class="card-img-top ">
+
+        <div class="row " id= "recipes-list">
+            <div class="col-12 col-lg-4 mb-3" id= "recipe">
+              <div class="card" id="link"><a href="#"></a>
+                <img src="#" alt="Photo de la recette" class="card-img-top " id="card_img">
                 <div class="card-body">
                     <div class="card-text">
-                      <div class="card-title info-card">Titre de la recette</div>
-                      <div class="time_area info-card" value="time"><i class="bi bi-clock icon-large"></i> XX min </div>
-                      <div class="ingredients_area info-card" value="ingredients">Ingredients for recipe</div>
-                      <div class="description_area info-card" value="description">Description of the recipe</div>
+                      <div class="card-title info-card" id="title">Titre de la recette</div>
+                      <div class="time_area info-card" id= "time" value="time">
+                        <i class="bi bi-clock icon-large" id="icon_time"></i>
+                        <p class="timer" id="timer"> XX min </p>
+                      </div>
+                      <div class="ingredients_area info-card" id = "ingredients" value="ingredients">Ingredients for recipe
+                        <div class ="ingredient_of_recipe info_card" id="ingredient_of_recipe"></div>
+                        <div class = "quantity" id = "quantity"></div>
+                      </div>
+                      <div class="description_area info-card" id ="description" value="description">Description of the recipe</div>
                     </div>
                 </div>
               </div>
             </div>
-            <div class="col-12 col-lg-4 mb-3">
-                <div class="card"><a href="#"></a>
-                  <img src="#" alt="Photo de la recette" class="card-img-top ">
-                  <div class="card-body">
-                      <div class="card-text">
-                        <div class="card-title info-card">Titre de la recette</div>
-                        <div class="time_area info-card" value="time"><i class="bi bi-clock icon-large"></i> XX min </div>
-                        <div class="ingredients_area info-card" value="ingredients">Ingredients for recipe</div>
-                        <div class="description_area info-card" value="description">Description of the recipe</div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-12 col-lg-4 mb-3">
-                <div class="card"><a href="#"></a>
-                  <img src="#" alt="Photo de la recette" class="card-img-top ">
-                  <div class="card-body">
-                      <div class="card-text">
-                        <div class="card-title info-card">Titre de la recette</div>
-                        <div class="time_area info-card" value="time"><i class="bi bi-clock icon-large"></i> XX min </div>
-                        <div class="ingredients_area info-card" value="ingredients">Ingredients for recipe</div>
-                        <div class="description_area info-card" value="description">Description of the recipe</div>
-                      </div>
-                  </div>
-                </div>
-              </div>
           </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

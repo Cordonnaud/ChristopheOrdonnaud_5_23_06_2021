@@ -1,3 +1,4 @@
+showRecipes(recipes);
 // console.log(recipes);
 
 // Etablir un tableau des noms de recettes
@@ -55,6 +56,7 @@ searchBar.addEventListener('change', function(event) {
     createRecipeResult();
     console.log("Tableau des recette filtrées")
     console.log(recipeResult)
+    showRecipes(recipeResult)
 
     // alimenter le filtre Ingredient
  
@@ -68,6 +70,9 @@ searchBar.addEventListener('change', function(event) {
     //         }console.log(ingredientsFilterArray)
     //     }
     // }
+
+    
+
 });
 
 
