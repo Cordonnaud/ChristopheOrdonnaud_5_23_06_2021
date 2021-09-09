@@ -38,13 +38,21 @@
     background-color:#E7E7E7;
 }
 .card-text{
-    display: grid;
-    /* grid-template-columns: [first-line] 50% [second-line] 16% [last-line] 100%;
-    grid-template-rows: [first-row] 25% [second-row] 75% [last-row] 100%; */
-    grid-template-columns: [first] 50% [line2] 16% [line3]auto;
-    grid-template-rows: [row1-start] 25% [last-line]auto;
+    height: 150px;
+    display: inline-grid;
+    grid-template-columns: [first] 50% [line2] 20% [line3]auto;
+    grid-template-rows: [row1-start]30% [row1-end]auto;
+}
+
+.info-card{
+    height:min-content ;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom: 0rem;
 }
 .card-title{
+    font-size: 18px;
+
     grid-column-start: 1 ;
     grid-column-end: 3;
     grid-row-start: 1;
@@ -52,23 +60,43 @@
 
 }
 .time_area{
-    font-weight: bold;
+    display:flex;
+    justify-content: space-around;
+    align-content: flex-end;
+    font-weight: 700;
     grid-column-start: 3 ;
     grid-column-end: 4;
     grid-row-start: 1;
-    grid-row-end: 3;
-    margin-left: 1rem;
+    grid-row-end: 2;
+    padding-left: 0.25rem;
 
 }
-.bi-clock{
-    font-size: 1.2rem;
+.fa-clock-o{
+    font-size: 1.5rem;
+    /* font-style:; */
+
+    
+}
+.timer{
+    font-size: 18px;
+
+    
+
 }
 .ingredients_area{
+   
     grid-column-start: 1 ;
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
+    overflow:hidden; 
+    height: 110px;
 
+}
+
+
+.ingredient_of_recipe{
+    font-weight: 700;
 }
 .description_area{
     grid-column-start: 2 ;
@@ -76,6 +104,8 @@
     grid-row-start: 3;
     grid-row-end: 4;
     margin-left: 1rem;
+    overflow:hidden; 
+    height: 110px;
 
 }
 /* .info-card{
