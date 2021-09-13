@@ -31,7 +31,7 @@ function createRecipeNameArray(){
 // Etablir un tableau des ingredients
 function createIngredientArray(){
     for(var i=0; i< recipes.length -1; i++) {
-        itemIngredientsArray= recipes[i].ingredients;
+        var itemIngredientsArray= recipes[i].ingredients;
        for(var j=0; j < itemIngredientsArray.length -1; j++){
            var ingredientBrut= itemIngredientsArray[j].ingredient;
            var ingredient= ingredientBrut.toLowerCase();
@@ -267,12 +267,19 @@ function showRecipes(recipes) {
   
         for(var j = 0; j < recipe.ingredients.length; j++) {
             var ingredientInRecipe = recipe.ingredients[j];
-            
+           
             var quantityAndUnit = "";
-
+            var ingredientUnit= ingredientInRecipe.unit;
+            
             if(ingredientInRecipe.quantity) {
-                if(ingredientInRecipe.unit) {
-                    quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientInRecipe.unit;
+                quantityAndUnit =  ingredientInRecipe.quantity
+            }
+            if(ingredientInRecipe.quantite) {
+                quantityAndUnit =  ingredientInRecipe.quantite
+            }
+            if(ingredientInRecipe.quantity) {
+                if(ingredientUnit) {
+                    quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientUnit;
                 }
                 if(ingredientInRecipe.unite) {
                     quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientInRecipe.unite;
@@ -287,28 +294,29 @@ function showRecipes(recipes) {
                     quantityAndUnit = " " + ingredientInRecipe.quantite + " " + ingredientInRecipe.unite;
                 }
             }
-            var recipeCardIngred = document.createElement("div");
+
+            
+            
+        var ingredientPlusQuantity = document.createElement('div');
+        ingredientPlusQuantity.classList.add("ingredient_aligne");
+        var recipeCardIngred = document.createElement("p");
         recipeCardIngred.classList.add("ingredient_of_recipe") 
         recipeCardIngred.id = "ingredient_of_recipe";
-        recipeCardIngred.textContent = ingredientInRecipe.ingredient + ":";
+        var recipeCardIngredStrong = document.createElement('strong')
+        recipeCardIngredStrong.textContent = ingredientInRecipe.ingredient   + " : "  ;
         // console.log("texte de Ingredient en gras" + " =====" + recipeCardIngred.textContent  )
-        recipeCardIngredients.appendChild(recipeCardIngred);
+        recipeCardIngred.appendChild(recipeCardIngredStrong);
+        ingredientPlusQuantity.appendChild(recipeCardIngred);
 
-        var recipeCardQuantity = document.createElement("div");
+        var recipeCardQuantity = document.createElement("p");
         recipeCardQuantity.classList.add("quantity");
         recipeCardQuantity.id ="quantity";
-        recipeCardQuantity.textContent = quantityAndUnit
+        recipeCardQuantity.textContent = quantityAndUnit;
         // console.log("texte de recipeCardQuantity" + " =====" + recipeCardQuantity.textContent)
-        recipeCardIngredients.appendChild(recipeCardQuantity);
+        ingredientPlusQuantity.appendChild(recipeCardQuantity);
+        recipeCardIngredients.appendChild(ingredientPlusQuantity);
         recipeCardText.appendChild(recipeCardIngredients);
         }
-        
-        // var recipeCardQuantity = document.createElement("div");
-        // recipeCardQuantity.classList.add("quantity");
-        // recipeCardQuantity.id ="quantity";
-        // recipeCardQuantity.textContent = quantityAndUnit
-        // // console.log("texte de recipeCardQuantity" + " =====" + recipeCardQuantity.textContent)
-        // recipeCardIngredients.appendChild(recipeCardQuantity);
         
 
             //Description
@@ -322,8 +330,23 @@ function showRecipes(recipes) {
         recipeCardBody.appendChild(recipeCardText);
         recipeCardLink.appendChild(recipeCardBody);
         recipeCard1.appendChild(recipeCardLink);
-        // recipeCard.appendChild(recipeCard1);
         recipeList.appendChild(recipeCard1)
+    }
+}
 
+// Etablir un tableau des ingredients
+function createIngredientFilterArray(){
+    for(var i=0; i< recipeResult.length -1; i++) {
+        var itemIngredientsFilterArray= recipeResult[i].ingredients;
+    for(var j=0; j < itemIngredientsFilterArray.length -1; j++){
+        var ingredientFilterBrut= itemIngredientsFilterArray[j].ingredient;
+        var ingredientFilter= ingredientFilterBrut.toLowerCase();
+        cleanWordCharactere(ingredientFilter);
+
+        ingredientFilter=ingredientFilter.replace(/'/g," ");
+        if(!ingredientsFilterArray.includes(ingredientFilter)){
+            ingredientsFilterArray.push(ingredientFilter);
+            }
+        }
     }
 }

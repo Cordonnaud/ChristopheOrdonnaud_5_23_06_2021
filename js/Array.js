@@ -54,25 +54,19 @@ searchBar.addEventListener('change', function(event) {
     // console.log(correspondantWords);
     // Etablir le tableau des Recettes filtrées suivant ingredient filtrés
     createRecipeResult();
+    showRecipes(recipeResult)
     console.log("Tableau des recette filtrées")
     console.log(recipeResult)
-    showRecipes(recipeResult)
-
-    // alimenter le filtre Ingredient
- 
-    // for(var i=0; i< recipeResult.length -1; i++) {
-    //     var recipe=recipeResult[i];
-    //     var ingredients= recipeResult[i].ingredients;
-    //     for(var j=0; j < ingredients.length -1; j++){
-    //         var ingredient= ingredients[j].ingredient;
-    //         if(!ingredientsFilterArray.includes(ingredient)){
-    //             ingredientsFilterArray.push(ingredient);
-    //         }console.log(ingredientsFilterArray)
-    //     }
-    // }
-
     
 
+    // alimenter le filtre Ingredient
+    
+    // Etablir un tableau des ingredients
+    createIngredientFilterArray()
+        console.log("Tableau des Ingredients des recettes filtrées")
+        console.log(ingredientsFilterArray)
+    
+    
 });
 
 
