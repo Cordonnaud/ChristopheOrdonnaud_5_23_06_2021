@@ -351,10 +351,12 @@ function showTAgs() {
         filtersList.innerHTML = "";
 
         var filterTag = document.createElement("div");
-        filterTag.className = "row";
-
+        filterTag.className = "row tags-container";
+        filterTag.id="tags-container"
+        
+        //  tags ingredients
         var ingredientTagContainer=document.createElement("div");
-        ingredientTagContainer.className="col-2 mb-3 bg-primary" 
+        ingredientTagContainer.className="col-2 mb-3 form-select bg-primary" 
         ingredientTagContainer.id="ingredients_list";
         ingredientTagContainer.textContent = "Ingredients";
         
@@ -368,8 +370,47 @@ function showTAgs() {
         ingredientTagIconTitle.className ="fas fa-chevron-down";
         ingredientTagIconTitle.id = "icon_chev-down"
         ingredientTagContainer.appendChild(ingredientTagIconTitle);
-        
+
         filterTag.appendChild(ingredientTagContainer)
+        
+        // Tag appareils
+        var appareilTagContainer=document.createElement("div");
+        appareilTagContainer.className="col-2 mb-3 form-select bg-danger" 
+        appareilTagContainer.id="appareils_list";
+        appareilTagContainer.textContent = "Appareils";
+        
+            // titre + chevron
+        var appareilTagTitle = document.createElement("div");
+        appareilTagTitle.className= "title_tag" ;
+        appareilTagTitle.id = "appareil_title";
+        appareilTagContainer.appendChild(appareilTagTitle)
+        
+        var appareilTagIconTitle= document.createElement( "i");
+        appareilTagIconTitle.className ="fas fa-chevron-down";
+        appareilTagIconTitle.id = "icon_chev-down"
+        appareilTagContainer.appendChild(appareilTagIconTitle);
+
+        filterTag.appendChild(appareilTagContainer)
+
+        // Tag ustensils
+        var ustensilTagContainer=document.createElement("div");
+        ustensilTagContainer.className="col-2 mb-3 form-select bg-success" 
+        ustensilTagContainer.id="ustensils_list";
+        ustensilTagContainer.textContent = "Ustensils";
+        
+            // titre + chevron
+        var ustensilTagTitle = document.createElement("div");
+        ustensilTagTitle.className= "title_tag" ;
+        ustensilTagTitle.id = "ustensil_title";
+        ustensilTagContainer.appendChild(ustensilTagTitle)
+        
+        var ustensilTagIconTitle= document.createElement( "i");
+        ustensilTagIconTitle.className ="fas fa-chevron-down";
+        ustensilTagIconTitle.id = "icon_chev-down"
+        ustensilTagContainer.appendChild(ustensilTagIconTitle);
+
+        filterTag.appendChild(ustensilTagContainer)
+
         filtersList.appendChild(filterTag)
 
         
