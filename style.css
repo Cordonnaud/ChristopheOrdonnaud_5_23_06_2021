@@ -28,6 +28,16 @@
 .bi-search{
     font-size: 2rem;
 }
+#filters-list{
+    margin: 10px
+
+}
+
+
+#recipes-list{
+    margin: 10px
+
+}
 
 .card-img-top{
     height: 178px;

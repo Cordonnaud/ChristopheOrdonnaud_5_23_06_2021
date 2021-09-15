@@ -1,5 +1,18 @@
 showRecipes(recipes);
-// console.log(recipes);
+// console.log("Recettes");
+// console.log(recipes)
+
+
+
+ //  afficher les Tags des filtre 
+// showTAgs(recipes)
+
+
+
+
+
+
+
 
 // Etablir un tableau des noms de recettes
 createRecipeNameArray();
@@ -35,6 +48,14 @@ createApplianceArray();
 // console.log("Tableau des Appareils");
 // console.log(appareilArray);
 
+//  afficher les Tags des filtre 
+    // showTAgs()
+    
+// console.log("Recettes");
+// console.log(recipes);
+    // afficher les tags des filtres  recettes dans le HTML
+
+
 
 // Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
 searchBar.addEventListener('change', function(event) {
@@ -59,13 +80,26 @@ searchBar.addEventListener('change', function(event) {
     console.log(recipeResult)
     
 
-    // alimenter le filtre Ingredient
+    // ---------------------------- alimenter le filtre Ingredient
     
     // Etablir un tableau des ingredients
     createIngredientFilterArray()
         console.log("Tableau des Ingredients des recettes filtrées")
         console.log(ingredientsFilterArray)
+
     
+    //  Etablir un tableau des Ustensiles
+    createUstensilsFilterArray()
+    console.log("Tableau des ustensils des recettes filtrées")
+        console.log(ustensilsFilterArray)
+
+        // Etablir un tableau des ingredients
+    createApplianceArray()
+    console.log("Tableau des appareil des recettes filtrées")
+    console.log(appliancesFilterArray)
+
+    
+
     
 });
 

@@ -15,4 +15,7 @@ var ingredientsFilterArray=[];
 var appliancesFilterArray=[];
 var ustensilsFilterArray=[];
 var ingredientsFilterArray=[];
+var ustensilsFilterArray=[];
+var appliancesFilterArray=[];
 var searchBar = document.getElementById("searchbar");
+var recipeLoad=recipes

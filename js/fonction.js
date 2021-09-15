@@ -194,10 +194,16 @@ function createRecipeResult(){
             }
         }
     }
-} console.log(recipeResult)
+}
+
+// } console.log(recipeResult)
+
+
+
 
 // montrer les recettes dans le HTML
-function showRecipes(recipes) {
+function showRecipes() {
+    // console.log("Recettes");
     // console.log(recipes)
     
     var recipeList = document.getElementById("recipes-list");
@@ -208,8 +214,8 @@ function showRecipes(recipes) {
         var recipe = recipes[i];
         
 
-        // var recipeCard = document.createElement("div");
-        // recipeCard.className = "row";
+        var recipeCard = document.createElement("div");
+        recipeCard.className = "row";
         
 
         var recipeCard1 = document.createElement("div");
@@ -294,28 +300,25 @@ function showRecipes(recipes) {
                     quantityAndUnit = " " + ingredientInRecipe.quantite + " " + ingredientInRecipe.unite;
                 }
             }
+            var ingredientPlusQuantity = document.createElement('div');
+            ingredientPlusQuantity.classList.add("ingredient_aligne");
+            var recipeCardIngred = document.createElement("p");
+            recipeCardIngred.classList.add("ingredient_of_recipe") 
+            recipeCardIngred.id = "ingredient_of_recipe";
+            var recipeCardIngredStrong = document.createElement('strong')
+            recipeCardIngredStrong.textContent = ingredientInRecipe.ingredient   + " : "  ;
+            // console.log("texte de Ingredient en gras" + " =====" + recipeCardIngred.textContent  )
+            recipeCardIngred.appendChild(recipeCardIngredStrong);
+            ingredientPlusQuantity.appendChild(recipeCardIngred);
 
-            
-            
-        var ingredientPlusQuantity = document.createElement('div');
-        ingredientPlusQuantity.classList.add("ingredient_aligne");
-        var recipeCardIngred = document.createElement("p");
-        recipeCardIngred.classList.add("ingredient_of_recipe") 
-        recipeCardIngred.id = "ingredient_of_recipe";
-        var recipeCardIngredStrong = document.createElement('strong')
-        recipeCardIngredStrong.textContent = ingredientInRecipe.ingredient   + " : "  ;
-        // console.log("texte de Ingredient en gras" + " =====" + recipeCardIngred.textContent  )
-        recipeCardIngred.appendChild(recipeCardIngredStrong);
-        ingredientPlusQuantity.appendChild(recipeCardIngred);
-
-        var recipeCardQuantity = document.createElement("p");
-        recipeCardQuantity.classList.add("quantity");
-        recipeCardQuantity.id ="quantity";
-        recipeCardQuantity.textContent = quantityAndUnit;
-        // console.log("texte de recipeCardQuantity" + " =====" + recipeCardQuantity.textContent)
-        ingredientPlusQuantity.appendChild(recipeCardQuantity);
-        recipeCardIngredients.appendChild(ingredientPlusQuantity);
-        recipeCardText.appendChild(recipeCardIngredients);
+            var recipeCardQuantity = document.createElement("p");
+            recipeCardQuantity.classList.add("quantity");
+            recipeCardQuantity.id ="quantity";
+            recipeCardQuantity.textContent = quantityAndUnit;
+            // console.log("texte de recipeCardQuantity" + " =====" + recipeCardQuantity.textContent)
+            ingredientPlusQuantity.appendChild(recipeCardQuantity);
+            recipeCardIngredients.appendChild(ingredientPlusQuantity);
+            recipeCardText.appendChild(recipeCardIngredients);
         }
         
 
@@ -333,6 +336,52 @@ function showRecipes(recipes) {
         recipeList.appendChild(recipeCard1)
     }
 }
+// Montrer les elements dans Tags Filtre 
+function showTAgs() {
+    // console.log("Recettes");
+    // console.log(recipes)
+   
+    
+    
+    for(var i = 0; i < recipes.length -1; i++) {
+        var recipe = recipes[i];
+        // console.log("Recettes");
+        // console.log(recipe)
+        var filtersList = document.getElementById("filters-list");
+        filtersList.innerHTML = "";
+
+        var filterTag = document.createElement("div");
+        filterTag.className = "row";
+
+        var ingredientTagContainer=document.createElement("div");
+        ingredientTagContainer.className="col-2 mb-3 bg-primary" 
+        ingredientTagContainer.id="ingredients_list";
+        ingredientTagContainer.textContent = "Ingredients";
+        
+            // titre + chevron
+        var ingredientTagTitle = document.createElement("div");
+        ingredientTagTitle.className= "title_tag" ;
+        ingredientTagTitle.id = "ingredient_title";
+        ingredientTagContainer.appendChild(ingredientTagTitle)
+        
+        var ingredientTagIconTitle= document.createElement( "i");
+        ingredientTagIconTitle.className ="fas fa-chevron-down";
+        ingredientTagIconTitle.id = "icon_chev-down"
+        ingredientTagContainer.appendChild(ingredientTagIconTitle);
+        
+        filterTag.appendChild(ingredientTagContainer)
+        filtersList.appendChild(filterTag)
+
+        
+
+        
+    }
+    
+}
+
+//  afficher les Tags des filtre 
+showTAgs(recipes)
+console.log("que pasa ??")
 
 // Etablir un tableau des ingredients
 function createIngredientFilterArray(){
@@ -350,3 +399,34 @@ function createIngredientFilterArray(){
         }
     }
 }
+
+//  Etablir un tableau des Ustensiles
+function createUstensilsFilterArray(){
+    for(var i=0; i< recipeResult.length -1; i++) {
+        var itemUstensilsFilterArray= recipeResult[i].ustensils;
+        for(j=0; j<itemUstensilsFilterArray.length -1; j++) {
+            var ustensilFilterItem=itemUstensilsFilterArray[j];
+            var ustensilFilter= ustensilFilterItem.toLowerCase();
+            cleanWordCharactere(ustensilFilter);
+            ustensilFilter=ustensilFilter.replace(/'/g," ");
+            if(!ustensilsFilterArray.includes(ustensilFilter)){
+                ustensilsFilterArray.push(ustensilFilter);
+            }
+        }
+    }
+}
+
+//  Etablir un tableau des Appareils
+function createApplianceArray(){
+    for(var i=0; i< recipeResult.length -1; i++) {
+        var applianceFilterBrut= recipeResult[i].appliance;
+        var applianceFilter= applianceFilterBrut.toLowerCase();
+        cleanWordCharactere(applianceFilter);
+        applianceFilter=applianceFilter.replace(/'/g," ");
+        if(!appliancesFilterArray.includes(applianceFilter)){
+            appliancesFilterArray.push(applianceFilter);
+        }
+    }
+}
+
+
