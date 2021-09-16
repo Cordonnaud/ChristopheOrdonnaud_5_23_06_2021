@@ -1,5 +1,5 @@
 function cleanWordCharactere(element) {
-    element=element.replace(/ê/g,"e");
+    element=element.replace(/ê/g,"è");
     element=element.replace(/ë/g,"e");
     element=element.replace(/'/g," ");
     element=element.replace(/î/g,"i");
@@ -202,7 +202,7 @@ function createRecipeResult(){
 
 
 // montrer les recettes dans le HTML
-function showRecipes() {
+function showRecipes(recipes) {
     // console.log("Recettes");
     // console.log(recipes)
     
@@ -336,93 +336,133 @@ function showRecipes() {
         recipeList.appendChild(recipeCard1)
     }
 }
+
 // Montrer les elements dans Tags Filtre 
-function showTAgs() {
+// ------------------------------------------Tags Ingredients
+var tagIngredientsArray= [];
+function showTAgsIngredients() {
     // console.log("Recettes");
     // console.log(recipes)
    
-    
-    
-    for(var i = 0; i < recipes.length -1; i++) {
+    for(var i=0; i<recipes.length ; i++){
         var recipe = recipes[i];
-        // console.log("Recettes");
-        // console.log(recipe)
-        var filtersList = document.getElementById("filters-list");
-        filtersList.innerHTML = "";
+        var ingredients = recipe.ingredients;
+        for(var j=0; j<ingredients.length ; j++){
+            var ingredientBrut = ingredients[j].ingredient
+            var ingredient= ingredientBrut.toLowerCase();
+        
+            ingredient=ingredient.replace(/ê/g,"è");
+            ingredient=ingredient.replace(/ë/g,"e");
+            ingredient=ingredient.replace(/'/g," ");
+            ingredient=ingredient.replace(/î/g,"i");
+            ingredient=ingredient.replace(/ï/g,"i");
+            ingredient=ingredient.replace(/'/g," ");
+            if(!tagIngredientsArray.includes(ingredient)){
+                tagIngredientsArray.push(ingredient);
+            }
+            tagIngredientsArray.sort()
+           
 
-        var filterTag = document.createElement("div");
-        filterTag.className = "row tags-container";
-        filterTag.id="tags-container"
-        
-        //  tags ingredients
-        var ingredientTagContainer=document.createElement("div");
-        ingredientTagContainer.className="col-2 mb-3 form-select bg-primary" 
-        ingredientTagContainer.id="ingredients_list";
-        ingredientTagContainer.textContent = "Ingredients";
-        
-            // titre + chevron
-        var ingredientTagTitle = document.createElement("div");
-        ingredientTagTitle.className= "title_tag" ;
-        ingredientTagTitle.id = "ingredient_title";
-        ingredientTagContainer.appendChild(ingredientTagTitle)
-        
-        var ingredientTagIconTitle= document.createElement( "i");
-        ingredientTagIconTitle.className ="fas fa-chevron-down";
-        ingredientTagIconTitle.id = "icon_chev-down"
-        ingredientTagContainer.appendChild(ingredientTagIconTitle);
-
-        filterTag.appendChild(ingredientTagContainer)
-        
-        // Tag appareils
-        var appareilTagContainer=document.createElement("div");
-        appareilTagContainer.className="col-2 mb-3 form-select bg-danger" 
-        appareilTagContainer.id="appareils_list";
-        appareilTagContainer.textContent = "Appareils";
-        
-            // titre + chevron
-        var appareilTagTitle = document.createElement("div");
-        appareilTagTitle.className= "title_tag" ;
-        appareilTagTitle.id = "appareil_title";
-        appareilTagContainer.appendChild(appareilTagTitle)
-        
-        var appareilTagIconTitle= document.createElement( "i");
-        appareilTagIconTitle.className ="fas fa-chevron-down";
-        appareilTagIconTitle.id = "icon_chev-down"
-        appareilTagContainer.appendChild(appareilTagIconTitle);
-
-        filterTag.appendChild(appareilTagContainer)
-
-        // Tag ustensils
-        var ustensilTagContainer=document.createElement("div");
-        ustensilTagContainer.className="col-2 mb-3 form-select bg-success" 
-        ustensilTagContainer.id="ustensils_list";
-        ustensilTagContainer.textContent = "Ustensils";
-        
-            // titre + chevron
-        var ustensilTagTitle = document.createElement("div");
-        ustensilTagTitle.className= "title_tag" ;
-        ustensilTagTitle.id = "ustensil_title";
-        ustensilTagContainer.appendChild(ustensilTagTitle)
-        
-        var ustensilTagIconTitle= document.createElement( "i");
-        ustensilTagIconTitle.className ="fas fa-chevron-down";
-        ustensilTagIconTitle.id = "icon_chev-down"
-        ustensilTagContainer.appendChild(ustensilTagIconTitle);
-
-        filterTag.appendChild(ustensilTagContainer)
-
-        filtersList.appendChild(filterTag)
-
-        
-
-        
+        }
     }
-    
+    //  console.log(tagIngredientsArray)
+     for(var k=0; k<tagIngredientsArray.length-1 ; k++ ){
+        var ingredientA = tagIngredientsArray[k];
+        var listContainer= document.getElementById("ingredients_menu");
+        var listItem = document.createElement("li");
+        listItem.className="dropdown-item text-white bg-primary";
+        listItem.textContent = ingredientA;
+        listContainer.appendChild(listItem);
+        // console.log("test tableau")
+        // console.log(ingredient)
+    }
+
+}
+// --------------------------------------------Tags Appareils
+var tagAppareilsArray= [];
+function showTAgsAppareils() {
+    // console.log("Recettes");
+    // console.log(recipes)
+   
+    for(var i=0; i<recipes.length ; i++){
+        var applianceBrut = recipes[i].appliance;
+        var appliance= applianceBrut.toLowerCase();
+        appliance=appliance.replace(/ê/g,"è");
+        appliance=appliance.replace(/ë/g,"e");
+        appliance=appliance.replace(/'/g," ");
+        appliance=appliance.replace(/î/g,"i");
+        appliance=appliance.replace(/ï/g,"i");
+        appliance=appliance.replace(/'/g," ");
+        // console.log("Appareil nettoyés")
+        // console.log(appliance)
+        if(!tagAppareilsArray.includes(appliance)){
+            tagAppareilsArray.push(appliance);
+        }
+        tagAppareilsArray.sort()
+    }
+    // console.log("Tableau des Appareil nettoyés")
+    // console.log(tagAppareilsArray)
+
+    for(var j=0; j<tagAppareilsArray.length ; j++ ){
+        var appareil = tagAppareilsArray[j];
+       
+        var listContainer= document.getElementById("appareils_menu");
+        var listItem = document.createElement("li");
+        listItem.className="dropdown-item text-white bg-danger";
+        listItem.textContent = appareil;
+        listContainer.appendChild(listItem);
+    } 
+    // console.log("Appareil")
+    // console.log(appareil)
+ 
+}
+// --------------------------------------------Tags Appareils
+var tagUstensilsArray= [];
+function showTAgsUstensils() {
+    // console.log("Recettes");
+    // console.log(recipes)
+   
+    for(var i=0; i<recipes.length ; i++){
+        var ustensils = recipes[i].ustensils;
+        for(var j=0; j< ustensils.length; j ++){
+            var ustensilBrut=ustensils[j];
+            // console.log("Ustensils ")
+            // console.log(ustensils)
+            var ustensil= ustensilBrut.toLowerCase();
+            ustensil=ustensil.replace(/ê/g,"è");
+            ustensil=ustensil.replace(/ë/g,"e");
+            ustensil=ustensil.replace(/'/g," ");
+            ustensil=ustensil.replace(/î/g,"i");
+            ustensil=ustensil.replace(/ï/g,"i");
+            ustensil=ustensil.replace(/'/g," ");
+            // console.log("Ustensils nettoyés")
+            // console.log(ustensil)
+            if(!tagUstensilsArray.includes(ustensil)){
+                tagUstensilsArray.push(ustensil);
+            }
+            tagUstensilsArray.sort()
+        }
+    }
+    console.log("Tableau des Ustensils nettoyés")
+    console.log(tagUstensilsArray)
+
+    for(var j=0; j<tagUstensilsArray.length ; j++ ){
+        var ustensil = tagUstensilsArray[j];
+        
+        var listContainer= document.getElementById("ustensils_menu");
+        var listItem = document.createElement("li");
+        listItem.className="dropdown-item text-white bg-success";
+        listItem.textContent = ustensil;
+        listContainer.appendChild(listItem);
+    }
+    // console.log("Ustensil")
+    // console.log(ustensil)
 }
 
+
 //  afficher les Tags des filtre 
-showTAgs(recipes)
-console.log("que pasa ??")
+
+// console.log("que pasa ??")
 
 // Etablir un tableau des ingredients
 function createIngredientFilterArray(){

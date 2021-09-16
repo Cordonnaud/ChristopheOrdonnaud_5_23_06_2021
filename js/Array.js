@@ -49,12 +49,18 @@ createApplianceArray();
 // console.log(appareilArray);
 
 //  afficher les Tags des filtre 
-    // showTAgs()
+showTAgsIngredients()
+
+showTAgsAppareils()
+
+showTAgsUstensils() 
+
+
+
     
 // console.log("Recettes");
 // console.log(recipes);
     // afficher les tags des filtres  recettes dans le HTML
-
 
 
 // Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
