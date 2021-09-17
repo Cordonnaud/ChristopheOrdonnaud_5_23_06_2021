@@ -36,7 +36,9 @@ createDescriptionArray();
 // console.log("tableau des Descriptions");
 // console.log(descriptionArray);
 
-
+createApplianceArray();
+// console.log("Tableau des Appareils");
+// console.log(appareilArray);
 
 //  Etablir un tableau des Ustensiles
 createUstensilsArray();
@@ -44,9 +46,7 @@ createUstensilsArray();
 // console.log(ustensilArray);
 
 //  Etablir un tableau des Appareils
-createApplianceArray();
-// console.log("Tableau des Appareils");
-// console.log(appareilArray);
+
 
 //  afficher les Tags des filtre 
 showTAgsIngredients()
@@ -89,22 +89,23 @@ searchBar.addEventListener('change', function(event) {
     // ---------------------------- alimenter le filtre Ingredient
     
     // Etablir un tableau des ingredients
-    createIngredientFilterArray()
+    
+    createIngredientFilterArray();
         console.log("Tableau des Ingredients des recettes filtrées")
         console.log(ingredientsFilterArray)
 
     
     //  Etablir un tableau des Ustensiles
-    createUstensilsFilterArray()
+    createUstensilsFilterArray();
     console.log("Tableau des ustensils des recettes filtrées")
         console.log(ustensilsFilterArray)
 
         // Etablir un tableau des ingredients
-    createApplianceArray()
+    createApplianceFilterArray();
     console.log("Tableau des appareil des recettes filtrées")
     console.log(appliancesFilterArray)
 
-    
+    showTAgsIngredientsfilter()
 
     
 });
