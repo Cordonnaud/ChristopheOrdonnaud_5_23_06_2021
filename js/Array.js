@@ -49,11 +49,11 @@ createUstensilsArray();
 
 
 //  afficher les Tags des filtre 
-showTAgsIngredients()
+showTagsIngredients()
 
-showTAgsAppareils()
+showTagsAppareils()
 
-showTAgsUstensils() 
+showTagsUstensils() 
 
 
 
@@ -66,6 +66,8 @@ showTAgsUstensils()
 // Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
 searchBar.addEventListener('change', function(event) {
     // console.log(searchBar.value);
+    // Cacher les Tags des filtre 
+    closeTags()
 
 
     // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères
@@ -105,7 +107,11 @@ searchBar.addEventListener('change', function(event) {
     console.log("Tableau des appareil des recettes filtrées")
     console.log(appliancesFilterArray)
 
-    showTAgsIngredientsfilter()
+    showTagsIngredientsFilter();
+
+    showTagsAppareilsFilter();
+
+    showTagsUstensilsFilter()
 
     
 });
