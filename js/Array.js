@@ -107,6 +107,11 @@ searchBar.addEventListener('change', function(event) {
     console.log("Tableau des appareil des recettes filtrées")
     console.log(appliancesFilterArray)
 
+//    btn-chevron.addEventListener('click', function(event) {
+//         // console.log(searchBar.value);
+//         // Cacher les Tags des filtre 
+//         closeTags()
+    
     showTagsIngredientsFilter();
 
     showTagsAppareilsFilter();

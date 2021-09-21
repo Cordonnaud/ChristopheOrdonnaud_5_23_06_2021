@@ -404,6 +404,7 @@ function closeTags(recipes) {
 
     
 // Etablir un tableau des ingredients des recettes filtrées
+
 function createIngredientFilterArray(){
     for(var i=0; i< recipeResult.length -1; i++) {
         var itemIngredientsFilterArray= recipeResult[i].ingredients;
@@ -428,8 +429,8 @@ function createUstensilsFilterArray(){
     for(var i=0; i< recipeResult.length -1; i++) {
         var itemUstensilsFilterArray= recipeResult[i].ustensils;
         for(j=0; j<itemUstensilsFilterArray.length -1; j++) {
-            var ustensilFilterItem=itemUstensilsFilterArray[j];
-            var ustensilFilter= ustensilFilterItem.toLowerCase();
+            var ustensilFilterBrut=itemUstensilsFilterArray[j];
+            var ustensilFilter= ustensilFilterBrut.toLowerCase();
             cleanWordCharactere(ustensilFilter);
             ustensilFilter=ustensilFilter.replace(/'/g," ");
             if(!ustensilsFilterArray.includes(ustensilFilter)){
@@ -458,13 +459,15 @@ function showTagsIngredientsFilter() {
      for(var i=0; i<ingredientsFilterArray.length-1 ; i++ ){
         var ingredientA = ingredientsFilterArray[i];
         var listContainer= document.getElementById("ingredients_menu");
-        var listItem = document.createElement("li");
-        listItem.className="dropdown-item text-white bg-primary";
+        var listItem = document.createElement("button");
+        listItem.type="button";
+        listItem.className="dropdown-item text-white bg-primary grid";
         listItem.textContent = ingredientA;
         listContainer.appendChild(listItem);
        
     }
 }
+
 
 // Tags Appareils
 function showTagsAppareilsFilter() {
@@ -473,7 +476,7 @@ function showTagsAppareilsFilter() {
         var appareil = appliancesFilterArray[i];
         var listContainer= document.getElementById("appareils_menu");
         var listItem = document.createElement("li");
-        listItem.className="dropdown-item text-white bg-danger";
+        listItem.className="dropdown-item text-white bg-danger grid";
         listItem.textContent = appareil;
         listContainer.appendChild(listItem);
     } 
@@ -485,9 +488,21 @@ function showTagsUstensilsFilter() {
     for(var i=0; i<ustensilsFilterArray.length ; i++ ){
         var ustensilA = ustensilsFilterArray[i];var listContainer= document.getElementById("ustensils_menu");
         var listItem = document.createElement("li");
-        listItem.className="dropdown-item text-white bg-success";
+        listItem.className="dropdown-item text-white bg-success grid";
         listItem.textContent = ustensilA;
         listContainer.appendChild(listItem);
     }
 }
 
+function menuDeroulantIng(){
+    document.getElementById("ingredients_menu").classList.toggle("grid");
+  
+}
+
+function menuDeroulantApp(){
+    document.getElementById("appareils_menu").classList.toggle("grid");
+}
+
+function menuDeroulantUst(){
+    document.getElementById("ustensils_menu").classList.toggle("grid");
+}
