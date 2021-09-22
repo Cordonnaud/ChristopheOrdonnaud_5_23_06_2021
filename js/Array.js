@@ -55,7 +55,7 @@ showTagsAppareils()
 
 showTagsUstensils() 
 
-
+// createSelectedTag()
 
     
 // console.log("Recettes");
