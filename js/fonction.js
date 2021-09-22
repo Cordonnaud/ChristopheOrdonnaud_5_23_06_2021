@@ -346,17 +346,33 @@ function showRecipes(recipes) {
 var tagIngredientsArray= [];
 function showTagsIngredients() {
     ingredientsArray.sort()
-     for(var k=0; k<ingredientsArray.length-1 ; k++ ){
-        var ingredientA = ingredientsArray[k];
+     for(var i=0; i<ingredientsArray.length-1 ; i++ ){
+        var ingredientA = ingredientsArray[i];
         var listContainer= document.getElementById("ingredients_menu");
         var listItem = document.createElement("li");
         listItem.className="dropdown-item text-white bg-primary";
+        listItem.id="ingredient-tag";
         listItem.textContent = ingredientA;
         listContainer.appendChild(listItem);
        
     }
 
 }
+
+// function createSelectedTag(){
+//     var selectedTag=document.getElementById("selected_tag");
+//     var tagItem= document.createElement("div")
+//     tagItem.className= "selected-Tag text-white bg-primary"
+//     tagItem.textContent=ingredientT;
+//     selectedTag.appendChild(tagItem);
+    
+// }
+
+
+// var ingredientToTag=document.getElementById("ingredient-tag")
+// var tagedIngredient = ingredientToTag.addEventListener("click", createSelectedTag) 
+
+
 // Tags Appareils
 var tagAppareilsArray= [];
 function showTagsAppareils() {
@@ -452,6 +468,7 @@ function createApplianceFilterArray(){
         }
     }
 }
+
 // ------------------------------------------Montrer les elements dans Tags des recettes filtrées
 // Tags Ingredients
 function showTagsIngredientsFilter() {
@@ -459,15 +476,14 @@ function showTagsIngredientsFilter() {
      for(var i=0; i<ingredientsFilterArray.length-1 ; i++ ){
         var ingredientA = ingredientsFilterArray[i];
         var listContainer= document.getElementById("ingredients_menu");
-        var listItem = document.createElement("button");
-        listItem.type="button";
-        listItem.className="dropdown-item text-white bg-primary grid";
+        var listItem = document.createElement("li");
+        listItem.className="dropdown-item text-white bg-primary grid ";
+        listItem.id="tag-ingredient";
         listItem.textContent = ingredientA;
         listContainer.appendChild(listItem);
        
     }
 }
-
 
 // Tags Appareils
 function showTagsAppareilsFilter() {
