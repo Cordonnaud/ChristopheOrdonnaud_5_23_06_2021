@@ -352,6 +352,7 @@ function showTagsIngredients() {
         var listItem = document.createElement("li");
         listItem.className="dropdown-item text-white bg-primary";
         listItem.id="ingredient-tag";
+        listItem.addEventListener("click", createSelectedTag);
         listItem.textContent = ingredientA;
         listContainer.appendChild(listItem);
        
@@ -359,26 +360,34 @@ function showTagsIngredients() {
 
 }
 
-// function createSelectedTag(){
-//     var selectedTag=document.getElementById("selected_tag");
-//     var tagItem= document.createElement("div")
-//     tagItem.className= "selected-Tag text-white bg-primary"
-//     tagItem.textContent=ingredientT;
-//     selectedTag.appendChild(tagItem);
-    
-// }
+function createSelectedTag(event){
+    var tagedIngredient = event.target;
+    var ingredientTaged= tagedIngredient.textContent;
+    console.log ("ingredient taged")
+    console.log (ingredientTaged)
+    var selectedTag=document.getElementById("selected_tag");
+    var tagContainer= document.createElement("div")
+    var tagItem=document.createElement("div");
+    tagItem.className= "selected-Tag text-white bg-primary"
+    tagItem.textContent=ingredientTaged;
+    var tagIcone=document.createElement("i")
+    tagIcone.className="bi bi-x-circle cross-icone"
+    selectedTag.appendChild(tagContainer);
+    tagContainer.appendChild(tagItem);
+    tagItem.appendChild(tagIcone);
+}
 
 
 // var ingredientToTag=document.getElementById("ingredient-tag")
-// var tagedIngredient = ingredientToTag.addEventListener("click", createSelectedTag) 
+// var ingredientTaged = ingredientToTag.addEventListener("click", createSelectedTag) 
 
 
 // Tags Appareils
 var tagAppareilsArray= [];
 function showTagsAppareils() {
     applianceArray.sort();
-    for(var j=0; j<applianceArray.length ; j++ ){
-        var appareil = applianceArray[j];
+    for(var i=0; i<applianceArray.length ; i++ ){
+        var appareil = applianceArray[i];
         var listContainer= document.getElementById("appareils_menu");
         var listItem = document.createElement("li");
         listItem.className="dropdown-item text-white bg-danger";
@@ -393,8 +402,8 @@ function showTagsAppareils() {
 
 function showTagsUstensils() {
     ustensilArray.sort();
-    for(var j=0; j<ustensilArray.length ; j++ ){
-        var ustensilA = ustensilArray[j];
+    for(var i=0; i<ustensilArray.length ; i++ ){
+        var ustensilA = ustensilArray[i];
         
         var listContainer= document.getElementById("ustensils_menu");
         var listItem = document.createElement("li");
@@ -477,8 +486,8 @@ function showTagsIngredientsFilter() {
         var ingredientA = ingredientsFilterArray[i];
         var listContainer= document.getElementById("ingredients_menu");
         var listItem = document.createElement("li");
-        listItem.className="dropdown-item text-white bg-primary grid ";
-        listItem.id="tag-ingredient";
+        listItem.className="dropdown-item text-white bg-primary  ";
+        listItem.id="tag-ingredient grid";
         listItem.textContent = ingredientA;
         listContainer.appendChild(listItem);
        
@@ -492,7 +501,8 @@ function showTagsAppareilsFilter() {
         var appareil = appliancesFilterArray[i];
         var listContainer= document.getElementById("appareils_menu");
         var listItem = document.createElement("li");
-        listItem.className="dropdown-item text-white bg-danger grid";
+        listItem.className="dropdown-item text-white bg-danger ";
+        listItem.id="tag-appareil grid";
         listItem.textContent = appareil;
         listContainer.appendChild(listItem);
     } 
@@ -504,21 +514,22 @@ function showTagsUstensilsFilter() {
     for(var i=0; i<ustensilsFilterArray.length ; i++ ){
         var ustensilA = ustensilsFilterArray[i];var listContainer= document.getElementById("ustensils_menu");
         var listItem = document.createElement("li");
-        listItem.className="dropdown-item text-white bg-success grid";
+        listItem.className="dropdown-item text-white bg-success";
+        listItem.id="tag-ustensil grid";
         listItem.textContent = ustensilA;
         listContainer.appendChild(listItem);
     }
 }
 
-function menuDeroulantIng(){
-    document.getElementById("ingredients_menu").classList.toggle("grid");
+// function menuDeroulantIng(){
+//     document.getElementById("ingredients_menu").classList.toggle("grid");
   
-}
+// }
 
-function menuDeroulantApp(){
-    document.getElementById("appareils_menu").classList.toggle("grid");
-}
+// function menuDeroulantApp(){
+//     document.getElementById("appareils_menu").classList.toggle("grid");
+// }
 
-function menuDeroulantUst(){
-    document.getElementById("ustensils_menu").classList.toggle("grid");
-}
+// function menuDeroulantUst(){
+//     document.getElementById("ustensils_menu").classList.toggle("grid");
+// }
