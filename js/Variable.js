@@ -17,3 +17,4 @@ var ustensilsFilterArray=[];
 var searchBar = document.getElementById("searchbar");
 // var recipeLoad=recipes
 var applianceArray=[];
+var tagIngredientSearch =[];

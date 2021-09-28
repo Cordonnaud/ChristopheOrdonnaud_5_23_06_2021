@@ -14,7 +14,6 @@ function createIndexRecipeArray(){
     }
 }
 
-
 // Etablir un tableau des noms de recettes
 function createRecipeNameArray(){
     for(var i=0; i< recipes.length -1; i++) {
@@ -44,8 +43,6 @@ function createIngredientArray(){
         }
     }
 }
-
-
 
 //  Etablir un tableau des Descriptions
 function createDescriptionArray() {
@@ -144,8 +141,7 @@ function createCorrespondantWordArray(){
 
 // Etablir le tableau des Recettes filtrées suivant ingredient filtrés
 function createRecipeResult(){
-    // console.log(correspondantWords)
-    for(var i=0; i< recipes.length; i++) {
+     for(var i=0; i< recipes.length; i++) {
         var recipe=recipes[i];
         var ingredients= recipe.ingredients;
         for(var j=0; j < ingredients.length; j++){
@@ -153,14 +149,9 @@ function createRecipeResult(){
             var ingredient= ingredientBrut.toLowerCase();
             cleanWordCharactere(ingredient);
             ingredient=ingredient.replace(/'/g," ");
-            // console.log("itest")
-    
             for(var k=0; k<correspondantWords.length; k++){
                 var elementCor=correspondantWords[k];
-                // console.log( "element rechercher" +  elementCor);
-                // console.log( "ingredient issu des recette" +  ingredient)
-               if(ingredient.includes(elementCor)){
-                    // console.log(elementCor)
+                if(ingredient.includes(elementCor)){
                     if(!recipeResult.includes(recipe)){
                         recipeResult.push(recipe);
                     }
@@ -205,31 +196,22 @@ function createRecipeResult(){
 
 // montrer les recettes dans le HTML
 function showRecipes(recipes) {
-    // console.log("Recettes");
-    // console.log(recipes)
-    
     var recipeList = document.getElementById("recipes-list");
     recipeList.innerHTML = "";
-
     for(var i = 0; i < recipes.length; i++) {
-
         var recipe = recipes[i];
         
-
         var recipeCard = document.createElement("div");
         recipeCard.className = "row";
         
-
         var recipeCard1 = document.createElement("div");
         recipeCard1.className = "col-12 col-lg-4 mb-3";
         recipeCard1.id = "recipe";
         
-
         var recipeCardLink = document.createElement("div");
         recipeCardLink.classList.add("card");
         recipeCardLink.id = "link";
-       
-
+        
         var recipeCardImg = document.createElement("img");
         recipeCardImg.classList = "card-img-top ";
         recipeCardImg.id = "card_img";
@@ -237,21 +219,16 @@ function showRecipes(recipes) {
 
         var recipeCardBody = document.createElement("div");
         recipeCardBody.classList.add("card-body");
-        
-
-            //  zone de texte
+        //  zone de texte
         var recipeCardText = document.createElement ("div");
         recipeCardText.classList.add("card-text");
-        
-
-            // titre
+        // titre
         var recipeCardTitle = document.createElement("div");
         recipeCardTitle.className= "card-title info-card" ;
         recipeCardTitle.id = "title";
         recipeCardTitle.textContent = recipe.name;
         recipeCardText.appendChild(recipeCardTitle);
-
-            //  icone + timer
+        //  icone + timer
         var recipeCardTime = document.createElement("div");
         recipeCardTime.className= "time_area info-card" ;
         recipeCardTime.id = "time";
@@ -267,18 +244,15 @@ function showRecipes(recipes) {
         recipeCardTimer.id = "timer";
         recipeCardTimer.textContent = recipe.time + "min";
         recipeCardTime.appendChild(recipeCardTimer);
-
-            // ingredients et quantité / unité
+        // ingredients et quantité / unité
         var recipeCardIngredients = document.createElement("div");
         recipeCardIngredients.className = "ingredients_area info-card";
         recipeCardIngredients.id = "ingredients"
   
         for(var j = 0; j < recipe.ingredients.length; j++) {
             var ingredientInRecipe = recipe.ingredients[j];
-           
             var quantityAndUnit = "";
             var ingredientUnit= ingredientInRecipe.unit;
-            
             if(ingredientInRecipe.quantity) {
                 quantityAndUnit =  ingredientInRecipe.quantity
             }
@@ -292,7 +266,6 @@ function showRecipes(recipes) {
                 if(ingredientInRecipe.unite) {
                     quantityAndUnit = " " + ingredientInRecipe.quantity + " " + ingredientInRecipe.unite;
                 }
-                
             }
             if(ingredientInRecipe.quantite) {
                 if(ingredientInRecipe.unit) {
@@ -322,16 +295,13 @@ function showRecipes(recipes) {
             recipeCardIngredients.appendChild(ingredientPlusQuantity);
             recipeCardText.appendChild(recipeCardIngredients);
         }
-        
-
-            //Description
+        //Description
         var recipeCardDescription = document.createElement("div");
         recipeCardDescription.className = "description_area info-card";
         recipeCardDescription.id = "description";
         recipeCardDescription.textContent = recipe.description;
         // console.log("texte de la description" + " =====" + recipeCardDescription.textContent);
         recipeCardText.appendChild(recipeCardDescription);
-
         recipeCardBody.appendChild(recipeCardText);
         recipeCardLink.appendChild(recipeCardBody);
         recipeCard1.appendChild(recipeCardLink);
@@ -342,7 +312,7 @@ function showRecipes(recipes) {
 
 // ---------------------------Montrer les elements dans Tags Filtre-------------- 
 
-// Tags Ingredients
+// Tags Ingredients : liste des ingredients
 var tagIngredientsArray= [];
 function showTagsIngredients() {
     ingredientsArray.sort()
@@ -352,35 +322,32 @@ function showTagsIngredients() {
         var listItem = document.createElement("li");
         listItem.className="dropdown-item text-white bg-primary";
         listItem.id="ingredient-tag";
-        listItem.addEventListener("click", createSelectedTag);
+        listItem.addEventListener("click", createSelectedTagIngredient);
         listItem.textContent = ingredientA;
         listContainer.appendChild(listItem);
-       
     }
-
 }
-
-function createSelectedTag(event){
+// Tags Ingredients : Ingredients sélectionnés
+function createSelectedTagIngredient(event){
     var tagedIngredient = event.target;
     var ingredientTaged= tagedIngredient.textContent;
-    console.log ("ingredient taged")
-    console.log (ingredientTaged)
-    var selectedTag=document.getElementById("selected_tag");
-    var tagContainer= document.createElement("div")
+
+    tagIngredientSearch = ingredientTaged
+    
+    var selectedTag=document.getElementById("selected_tag_ing");
+   
     var tagItem=document.createElement("div");
-    tagItem.className= "selected-Tag text-white bg-primary"
+    tagItem.className= "selected-Tag text-white bg-primary  "
+    tagItem.id= "selected-Tag-Ingredient"
     tagItem.textContent=ingredientTaged;
-    var tagIcone=document.createElement("i")
-    tagIcone.className="bi bi-x-circle cross-icone"
-    selectedTag.appendChild(tagContainer);
-    tagContainer.appendChild(tagItem);
+    
+    var tagIcone=document.createElement("i");
+    tagIcone.className="bi bi-x-circle cross-icone";
+    tagIcone.addEventListener("click", closeTagFilterIng);
+
+    selectedTag.appendChild(tagItem);
     tagItem.appendChild(tagIcone);
 }
-
-
-// var ingredientToTag=document.getElementById("ingredient-tag")
-// var ingredientTaged = ingredientToTag.addEventListener("click", createSelectedTag) 
-
 
 // Tags Appareils
 var tagAppareilsArray= [];
@@ -390,27 +357,71 @@ function showTagsAppareils() {
         var appareil = applianceArray[i];
         var listContainer= document.getElementById("appareils_menu");
         var listItem = document.createElement("li");
+        listItem.id="appareil-tag";
+        listItem.addEventListener("click", createSelectedTagAppareils);
         listItem.className="dropdown-item text-white bg-danger";
         listItem.textContent = appareil;
         listContainer.appendChild(listItem);
-    } 
-    // console.log("Appareil")
-    // console.log(appareil)
- 
+    }
 }
-// Tags Ustensils
+// Tags Appareils : Appareils sélectionnés
+function createSelectedTagAppareils(event){
+    var tagedAppareil = event.target;
+    var appareilTaged= tagedAppareil.textContent;
 
+    tagAppareilSearch = appareilTaged
+
+    var selectedTag=document.getElementById("selected_tag_app");
+   
+    var tagItem=document.createElement("div");
+    tagItem.className= "selected-Tag text-white bg-danger"
+    tagItem.id = "selected-Tag-Appareil"
+    tagItem.textContent=appareilTaged;
+    
+ 
+    var tagIcone=document.createElement("i")
+    tagIcone.className="bi bi-x-circle cross-icone"
+    tagIcone.addEventListener("click", closeTagFilterApp);
+   
+    selectedTag.appendChild(tagItem);
+    tagItem.appendChild(tagIcone);
+}
+
+// Tags Ustensils
 function showTagsUstensils() {
     ustensilArray.sort();
     for(var i=0; i<ustensilArray.length ; i++ ){
         var ustensilA = ustensilArray[i];
-        
+    
         var listContainer= document.getElementById("ustensils_menu");
         var listItem = document.createElement("li");
         listItem.className="dropdown-item text-white bg-success";
+        listItem.id="appareil-tag";
+        listItem.addEventListener("click", createSelectedTagUstensils);
         listItem.textContent = ustensilA;
         listContainer.appendChild(listItem);
     }
+}
+// Tags Ustensils : Ustensils sélectionnés
+function createSelectedTagUstensils(event){
+    var tagedUstensil = event.target;
+    var ustensilTaged= tagedUstensil.textContent;
+    
+    tagUstensilSearch = ustensilTaged
+
+    var selectedTag=document.getElementById("selected_tag_ust");
+    
+    var tagItem=document.createElement("div");
+    tagItem.className= "selected-Tag text-white bg-success"
+    tagItem.id= "selected-Tag-Ustensil";
+    tagItem.textContent=ustensilTaged;
+   
+    var tagIcone=document.createElement("i")
+    tagIcone.className="bi bi-x-circle cross-icone"
+    tagIcone.addEventListener("click", closeTagFilterUst);
+
+    selectedTag.appendChild(tagItem);
+    tagItem.appendChild(tagIcone);
 }
 
 //  Cacher les Tags Array
@@ -419,13 +430,46 @@ function closeTags(recipes) {
     // console.log("Recettes");
     // console.log(recipes)
     
-    var ingredientsList = document.getElementById("ingredients_menu");
+    var ingredientsList = document.getElementBy("ingredients_menu");
     ingredientsList.innerHTML = "";
     var appareilsList = document.getElementById("appareils_menu");
     appareilsList.innerHTML = "";
     var ustensilsList = document.getElementById("ustensils_menu");
     ustensilsList.innerHTML = "";
+} 
+// close selected tags
+function closeTagFilterIng(event){
+    var selectedTagedFilter = event.target;
+    var tagFilter= selectedTagedFilter.parentElement;
+    console.log(tagFilter.textContent);
+    
+    var tagFilterParentIng = document.getElementById("selected_tag_ing")
+    tagFilterParentIng.removeChild(tagFilter);
+       
+    // filtrerMesRecettesEnFonctiondestag(tagFilter.textContent)
 }
+function closeTagFilterApp(event){
+    var selectedTagedFilter = event.target;
+    var tagFilter= selectedTagedFilter.parentElement;
+    console.log(tagFilter.textContent);
+   
+    var tagFilterParentApp = document.getElementById("selected_tag_app")
+    tagFilterParentApp.removeChild(tagFilter);
+    
+    // filtrerMesRecettesEnFonctiondestag(tagFilter.textContent)
+}
+function closeTagFilterUst(event){
+    var selectedTagedFilter = event.target;
+    var tagFilter= selectedTagedFilter.parentElement;
+    console.log(tagFilter.textContent);
+   
+    var tagFilterParentUst = document.getElementById("selected_tag_ust")
+    tagFilterParentUst.removeChild(tagFilter);
+    
+    // filtrerMesRecettesEnFonctiondestag(tagFilter.textContent)
+}
+
+
 
     
 // Etablir un tableau des ingredients des recettes filtrées

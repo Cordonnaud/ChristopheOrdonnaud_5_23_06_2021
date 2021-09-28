@@ -67,7 +67,7 @@ showTagsUstensils()
 searchBar.addEventListener('change', function(event) {
     // console.log(searchBar.value);
     // Cacher les Tags des filtre 
-    closeTags()
+    // closeTags()
 
 
     // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères

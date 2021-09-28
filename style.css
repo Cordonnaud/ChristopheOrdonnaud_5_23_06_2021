@@ -85,6 +85,7 @@
     grid-auto-rows: minmax(10px, auto);
     grid-auto-columns: min-content;;
 }
+
 .selected-Tag{
     padding:5px 15px 5px 15px ;
     margin-left:25px;

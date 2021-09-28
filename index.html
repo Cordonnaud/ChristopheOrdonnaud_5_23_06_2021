@@ -29,7 +29,13 @@
             </div>
         </div>
         <div class="row p-2"  id="Tags-list">
-          <div class="tag_selected" id="selected_tag" >
+          <div class="tag_selected" id="selected_tag_ing" >
+            
+          </div>
+          <div class="tag_selected" id="selected_tag_app" >
+            
+          </div>
+          <div class="tag_selected" id="selected_tag_ust" >
             
           </div>
         </div>
@@ -39,7 +45,8 @@
             
             <div class=" btn-group " >
               <input type="texte" class=" btn_custom btn bg-primary " id="tags" placeholder="Ingredients"></input>
-              <button onclick="menuDeroulantIng()" type="button" class=" btn btn-primary btn-chevron" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class=" btn btn-primary btn-chevron" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- onclick="menuDeroulantApp()" -->
                 <i class="bi bi-chevron-down text-white"></i>
                 <i class="bi bi-chevron-up text-white"></i>
               </button>
@@ -51,7 +58,8 @@
           <div class="col-2 mb-3 filter-container">
             <div class="btn-group  ">
               <input type="texte" class="btn bg-danger " id="tags" placeholder="Appareils"></input>
-              <button onclick="menuDeroulantApp()" type="button" class="btn btn-danger btn-chevron" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn btn-danger btn-chevron" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- onclick="menuDeroulantApp()" -->
                 <i class="bi bi-chevron-down text-white"></i>
               </button>
               <ul class="dropdown-menu " id="appareils_menu">
@@ -62,7 +70,8 @@
           <div class="col-2 mb-3 filter-container">
             <div class="btn-group ">
               <input type="texte" class="btn bg-success " id="tags" placeholder="Ustensils"></input>
-              <button onclick="menuDeroulantUst()" type="button" class="btn btn-success btn-chevron" data-bs-toggle="dropdown" aria-expanded="false">
+              <button type="button" class="btn btn-success btn-chevron" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- onclick="menuDeroulantApp()" -->
                 <i class="bi bi-chevron-down text-white"></i>
               </button>
               <ul class="dropdown-menu " id="ustensils_menu">
