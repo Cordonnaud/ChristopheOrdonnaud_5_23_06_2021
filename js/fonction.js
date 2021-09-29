@@ -309,6 +309,13 @@ function showRecipes(recipes) {
     }
 }
 
+// 5. L’utilisateur précise sa recherche grâce à l’un des champs : ingrédients, ustensiles, appareil.
+// Au fur et à mesure du remplissage les mots clés ne correspondant pas à la frappe dans le
+// champ disparaissent. Par exemple, si l’utilisateur entre “coco” dans la liste d’ingrédients,
+// seuls vont rester “noix de coco” et “lait de coco”.
+
+
+
 
 // ---------------------------Montrer les elements dans Tags Filtre-------------- 
 
@@ -328,16 +335,18 @@ function showTagsIngredients() {
     }
 }
 // Tags Ingredients : Ingredients sélectionnés
+var tagIngredientSearchArray= [];
+
 function createSelectedTagIngredient(event){
     var tagedIngredient = event.target;
     var ingredientTaged= tagedIngredient.textContent;
-
-    tagIngredientSearch = ingredientTaged
+    
+    
     
     var selectedTag=document.getElementById("selected_tag_ing");
    
     var tagItem=document.createElement("div");
-    tagItem.className= "selected-Tag text-white bg-primary  "
+    tagItem.className= "selected-Tag text-white bg-primary"
     tagItem.id= "selected-Tag-Ingredient"
     tagItem.textContent=ingredientTaged;
     
@@ -347,10 +356,45 @@ function createSelectedTagIngredient(event){
 
     selectedTag.appendChild(tagItem);
     tagItem.appendChild(tagIcone);
+    console.log(tagIngredientSearchArray);
+     
+    
+
+    if(!tagIngredientSearchArray.includes(ingredientTaged)){
+        tagIngredientSearchArray.push(ingredientTaged)
+    //     // tagExistant = ingredientTaged;
+    //     // console.log(tagExistant)
+    
+    }
+    if(!tagIngredientSearchArray.includes(ingredientTaged)) {
+            // console.log("doublon")
+            var doubleTagedFilter = event.target;
+            console.log("Tag en double :" + doubleTagedFilter.textContent);
+           
+           
+        }
+    console.log(tagIngredientSearchArray);
+
+
+
+    // checkDoublon()
+    
+    // console.log(tagIngredientSearchArray)
 }
 
+// function checkDoublon(event){
+
+//     var tagAffiché = tagIngredientSearchArray
+
+//     console.log(tagAffiché)
+//     console.log(tagExistant)
+//     // if(tagExistant= tagAffiché)
+// }
+
+
+
 // Tags Appareils
-var tagAppareilsArray= [];
+var tagAppareilSearchArray= [];
 function showTagsAppareils() {
     applianceArray.sort();
     for(var i=0; i<applianceArray.length ; i++ ){
@@ -369,7 +413,7 @@ function createSelectedTagAppareils(event){
     var tagedAppareil = event.target;
     var appareilTaged= tagedAppareil.textContent;
 
-    tagAppareilSearch = appareilTaged
+    tagAppareilSearchArray = appareilTaged
 
     var selectedTag=document.getElementById("selected_tag_app");
    
@@ -430,7 +474,7 @@ function closeTags(recipes) {
     // console.log("Recettes");
     // console.log(recipes)
     
-    var ingredientsList = document.getElementBy("ingredients_menu");
+    var ingredientsList = document.getElementById("ingredients_menu");
     ingredientsList.innerHTML = "";
     var appareilsList = document.getElementById("appareils_menu");
     appareilsList.innerHTML = "";
@@ -442,9 +486,21 @@ function closeTagFilterIng(event){
     var selectedTagedFilter = event.target;
     var tagFilter= selectedTagedFilter.parentElement;
     console.log(tagFilter.textContent);
-    
+    console.log(tagIngredientSearchArray);
+    var indexOfTagFilterToDelete = tagIngredientSearchArray.lastIndexOf(tagFilter.textContent)
+    console.log(indexOfTagFilterToDelete);
+
+    tagIngredientSearchArray.splice(indexOfTagFilterToDelete,1);
+    console.log(tagIngredientSearchArray)
+    // for (i=0; i<tagIngredientSearchArray.lenght-1; i++){
+        
+        
+        
+    // }
     var tagFilterParentIng = document.getElementById("selected_tag_ing")
     tagFilterParentIng.removeChild(tagFilter);
+    
+
        
     // filtrerMesRecettesEnFonctiondestag(tagFilter.textContent)
 }
@@ -526,6 +582,7 @@ function createApplianceFilterArray(){
 // Tags Ingredients
 function showTagsIngredientsFilter() {
     ingredientsFilterArray.sort()
+    console.log(ingredientsFilterArray)
      for(var i=0; i<ingredientsFilterArray.length-1 ; i++ ){
         var ingredientA = ingredientsFilterArray[i];
         var listContainer= document.getElementById("ingredients_menu");

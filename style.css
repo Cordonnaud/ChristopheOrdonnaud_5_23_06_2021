@@ -43,21 +43,14 @@
     
 
 }
-/* .btn_radius{
-    border-radius: 0 15px 15px 0 !important;
-} */
+
 
 .btn-chevron{
-    border-radius: 0 4px 4px 0 !important;
-    
+    border-radius: 0 4px 4px 0 !important;   
 }
 .bi-chevron-up{
     display:none;
 }
-/* .test-chev{ 
-    border-top-right-radius: 3px !important ;
-} */
-
 .tags-container .title_tag {
     display: flex; 
     flex-direction: row;
@@ -69,10 +62,6 @@
 #tags::placeholder{
     color: #E7E7E7;
 }
-/* .btn-group{
-    margin-right: 10px !important;
-} */
-
 .dropdown-menu{
     transform: translateY(65px)!important;
     width :300px;

@@ -91,7 +91,7 @@ searchBar.addEventListener('change', function(event) {
     // ---------------------------- alimenter le filtre Ingredient
     
     // Etablir un tableau des ingredients
-    
+    //  closeTags()
     createIngredientFilterArray();
         console.log("Tableau des Ingredients des recettes filtrées")
         console.log(ingredientsFilterArray)
@@ -106,25 +106,17 @@ searchBar.addEventListener('change', function(event) {
     createApplianceFilterArray();
     console.log("Tableau des appareil des recettes filtrées")
     console.log(appliancesFilterArray)
-
-//    btn-chevron.addEventListener('click', function(event) {
-//         // console.log(searchBar.value);
-//         // Cacher les Tags des filtre 
-//         closeTags()
-    
+   
     showTagsIngredientsFilter();
-
     showTagsAppareilsFilter();
-
-    showTagsUstensilsFilter()
-
-    
+    showTagsUstensilsFilter();
+    // closeTags()
+    // searchFilter.addEventListener('click', function(event) {
+    //     console.log(searchBar.value);
+    //     // Cacher les Tags des filtre 
+    //     closeTags()
+    //     // showTagsIngredientsFilter();
+    //     // showTagsAppareilsFilter();
+    //     // showTagsUstensilsFilter();
+    // });
 });
-
-
-
-
-
-    
-// poulet à l'ail braise à la réunionnaise et lait de coco
-// POULET A L'AIL BRAISE A LA REUNIONNAISE
