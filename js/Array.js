@@ -106,17 +106,11 @@ searchBar.addEventListener('change', function(event) {
     createApplianceFilterArray();
     console.log("Tableau des appareil des recettes filtrées")
     console.log(appliancesFilterArray)
-   
+    
+    closeTags()
+    
     showTagsIngredientsFilter();
     showTagsAppareilsFilter();
     showTagsUstensilsFilter();
-    // closeTags()
-    // searchFilter.addEventListener('click', function(event) {
-    //     console.log(searchBar.value);
-    //     // Cacher les Tags des filtre 
-    //     closeTags()
-    //     // showTagsIngredientsFilter();
-    //     // showTagsAppareilsFilter();
-    //     // showTagsUstensilsFilter();
-    // });
+   
 });

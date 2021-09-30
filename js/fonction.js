@@ -358,21 +358,18 @@ function createSelectedTagIngredient(event){
     tagItem.appendChild(tagIcone);
     console.log(tagIngredientSearchArray);
      
-    
+    if(!tagIngredientSearchArray.includes(ingredientTaged)) {
+        console.log("doublon")
+        var doubleTagedFilter = event.target;
+        console.log("Tag en double :" + doubleTagedFilter.textContent);
+    }
 
     if(!tagIngredientSearchArray.includes(ingredientTaged)){
         tagIngredientSearchArray.push(ingredientTaged)
-    //     // tagExistant = ingredientTaged;
-    //     // console.log(tagExistant)
-    
+        // tagExistant = ingredientTaged;
+        // console.log(tagExistant)
     }
-    if(!tagIngredientSearchArray.includes(ingredientTaged)) {
-            // console.log("doublon")
-            var doubleTagedFilter = event.target;
-            console.log("Tag en double :" + doubleTagedFilter.textContent);
-           
-           
-        }
+    
     console.log(tagIngredientSearchArray);
 
 
@@ -382,14 +379,6 @@ function createSelectedTagIngredient(event){
     // console.log(tagIngredientSearchArray)
 }
 
-// function checkDoublon(event){
-
-//     var tagAffiché = tagIngredientSearchArray
-
-//     console.log(tagAffiché)
-//     console.log(tagExistant)
-//     // if(tagExistant= tagAffiché)
-// }
 
 
 
@@ -430,7 +419,7 @@ function createSelectedTagAppareils(event){
     selectedTag.appendChild(tagItem);
     tagItem.appendChild(tagIcone);
 }
-
+var tagUstensilSearchArray=[];
 // Tags Ustensils
 function showTagsUstensils() {
     ustensilArray.sort();
@@ -485,18 +474,11 @@ function closeTags(recipes) {
 function closeTagFilterIng(event){
     var selectedTagedFilter = event.target;
     var tagFilter= selectedTagedFilter.parentElement;
-    console.log(tagFilter.textContent);
-    console.log(tagIngredientSearchArray);
+   
     var indexOfTagFilterToDelete = tagIngredientSearchArray.lastIndexOf(tagFilter.textContent)
-    console.log(indexOfTagFilterToDelete);
-
     tagIngredientSearchArray.splice(indexOfTagFilterToDelete,1);
     console.log(tagIngredientSearchArray)
-    // for (i=0; i<tagIngredientSearchArray.lenght-1; i++){
-        
-        
-        
-    // }
+    
     var tagFilterParentIng = document.getElementById("selected_tag_ing")
     tagFilterParentIng.removeChild(tagFilter);
     
@@ -507,7 +489,10 @@ function closeTagFilterIng(event){
 function closeTagFilterApp(event){
     var selectedTagedFilter = event.target;
     var tagFilter= selectedTagedFilter.parentElement;
-    console.log(tagFilter.textContent);
+
+    var indexOfTagFilterToDelete = tagAppareilSearchArray.lastIndexOf(tagFilter.textContent)
+    tagAppareilSearchArray.splice(indexOfTagFilterToDelete,1);
+    console.log(tagAppareilSearchArray)
    
     var tagFilterParentApp = document.getElementById("selected_tag_app")
     tagFilterParentApp.removeChild(tagFilter);
@@ -517,7 +502,11 @@ function closeTagFilterApp(event){
 function closeTagFilterUst(event){
     var selectedTagedFilter = event.target;
     var tagFilter= selectedTagedFilter.parentElement;
-    console.log(tagFilter.textContent);
+    
+    var indexOfTagFilterToDelete = tagUstensilSearchArray.lastIndexOf(tagFilter.textContent)
+    tagUstensilSearchArray.splice(indexOfTagFilterToDelete,1);
+    console.log(tagUstensilSearchArray)
+    
    
     var tagFilterParentUst = document.getElementById("selected_tag_ust")
     tagFilterParentUst.removeChild(tagFilter);
