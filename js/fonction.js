@@ -340,9 +340,6 @@ var tagIngredientSearchArray= [];
 function createSelectedTagIngredient(event){
     var tagedIngredient = event.target;
     var ingredientTaged= tagedIngredient.textContent;
-    
-    
-    
     var selectedTag=document.getElementById("selected_tag_ing");
    
     var tagItem=document.createElement("div");
@@ -358,18 +355,11 @@ function createSelectedTagIngredient(event){
     tagItem.appendChild(tagIcone);
     console.log(tagIngredientSearchArray);
      
-    if(!tagIngredientSearchArray.includes(ingredientTaged)) {
-        console.log("doublon")
-        var doubleTagedFilter = event.target;
-        console.log("Tag en double :" + doubleTagedFilter.textContent);
-    }
-
     if(!tagIngredientSearchArray.includes(ingredientTaged)){
         tagIngredientSearchArray.push(ingredientTaged)
-        // tagExistant = ingredientTaged;
-        // console.log(tagExistant)
-    }
-    
+        }
+    else{selectedTag.removeChild(tagItem)};
+   
     console.log(tagIngredientSearchArray);
 
 
@@ -383,7 +373,7 @@ function createSelectedTagIngredient(event){
 
 
 // Tags Appareils
-var tagAppareilSearchArray= [];
+
 function showTagsAppareils() {
     applianceArray.sort();
     for(var i=0; i<applianceArray.length ; i++ ){
@@ -398,12 +388,11 @@ function showTagsAppareils() {
     }
 }
 // Tags Appareils : Appareils sélectionnés
+
+var tagAppareilSearchArray= [];
 function createSelectedTagAppareils(event){
     var tagedAppareil = event.target;
     var appareilTaged= tagedAppareil.textContent;
-
-    tagAppareilSearchArray = appareilTaged
-
     var selectedTag=document.getElementById("selected_tag_app");
    
     var tagItem=document.createElement("div");
@@ -411,13 +400,21 @@ function createSelectedTagAppareils(event){
     tagItem.id = "selected-Tag-Appareil"
     tagItem.textContent=appareilTaged;
     
- 
     var tagIcone=document.createElement("i")
     tagIcone.className="bi bi-x-circle cross-icone"
     tagIcone.addEventListener("click", closeTagFilterApp);
    
     selectedTag.appendChild(tagItem);
     tagItem.appendChild(tagIcone);
+
+    if(!tagAppareilSearchArray.includes(appareilTaged)){
+        tagAppareilSearchArray.push(appareilTaged)
+        }
+    else{selectedTag.removeChild(tagItem)};
+   
+    console.log(tagAppareilSearchArray);
+
+
 }
 var tagUstensilSearchArray=[];
 // Tags Ustensils
@@ -455,6 +452,13 @@ function createSelectedTagUstensils(event){
 
     selectedTag.appendChild(tagItem);
     tagItem.appendChild(tagIcone);
+
+    if(!tagUstensilSearchArray.includes(ustensilTaged)){
+        tagUstensilSearchArray.push(ustensilTaged)
+        }
+    else{selectedTag.removeChild(tagItem)};
+   
+    console.log(tagUstensilSearchArray);
 }
 
 //  Cacher les Tags Array
@@ -602,7 +606,8 @@ function showTagsAppareilsFilter() {
 function showTagsUstensilsFilter() {
     ustensilsFilterArray.sort();
     for(var i=0; i<ustensilsFilterArray.length ; i++ ){
-        var ustensilA = ustensilsFilterArray[i];var listContainer= document.getElementById("ustensils_menu");
+        var ustensilA = ustensilsFilterArray[i];
+        var listContainer= document.getElementById("ustensils_menu");
         var listItem = document.createElement("li");
         listItem.className="dropdown-item text-white bg-success";
         listItem.id="tag-ustensil grid";
