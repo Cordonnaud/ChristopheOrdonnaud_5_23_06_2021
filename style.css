@@ -36,7 +36,7 @@
    
 
 }
-#tags{
+#tags_ing, #tags_app, #tags_ust {
     width:120px;
     height: 70px;
     border-radius: 4px 0 0 4px;
