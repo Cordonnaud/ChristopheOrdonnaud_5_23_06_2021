@@ -21,3 +21,4 @@ var searchFilterUst = document.getElementById("tags_ust");
 // var recipeLoad=recipes
 var applianceArray=[];
 var tagIngredientSearch =[];
+var recipeResultFilter = [];
