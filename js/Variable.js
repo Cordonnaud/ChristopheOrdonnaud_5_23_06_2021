@@ -8,6 +8,7 @@ var descriptionArray=[];
 var ustensilArray=[];
 var appareilArray=[];
 var keyWordsArray =[];
+var keywords=[];
 var correspondantWords =[];
 var recipeFilterArray=[];
 var recipeResult=[]
