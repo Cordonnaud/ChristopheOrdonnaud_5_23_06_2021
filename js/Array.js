@@ -1,4 +1,4 @@
-showRecipes(recipes);
+createRecipesCards(recipes);
 // console.log("Recettes");
 // console.log(recipes)
 
@@ -14,7 +14,7 @@ createIndexRecipeArray();
 
 
 //  Etablir un tableau des Ingredients
-createIngredientArray();
+createIngredientArray(recipes);
 // console.log("Tableau des Ingredients");
 // console.log(ingredientsArray);
 
@@ -49,56 +49,53 @@ showTagsUstensils()
 // Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
 searchBar.addEventListener('change', function() {
     
-    // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères
+    // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères dans la SEARCHBAR
     createKeyWordsArray(searchBar);
+    console.log('tableau des mot clef');
     console.log(keyWordsArray);
 
     // recherche d'une correspondance entre les mots cléfs et les mots ingredients
-    createCorrespondantWordArray();
-    // console.log('tableau de correspondance mot clef / ingredient ');
+    createCorrespondantWordArray(keyWordsArray);
+    // console.log('tableau de correspondance mot clef');
     // console.log(correspondantWords);
     // console.log(correspondantWords.sort());
 
     // Etablir le tableau des Recettes filtrées suivant ingredient filtrés
-    createRecipeResult();
-    showRecipes(recipeResult)
-    console.log("Tableau des recette filtrées")
-    console.log(recipeResult)
+    createRecipeResult(recipes);
+    // createRecipesCards(recipeResult)
+    // console.log("Tableau des recette filtrées")
+    // console.log(recipeResult)
+    // console.log (keyWordsArray)
+    // searchRecipes(keyWordsArray) 
+    console.log(recipeResult) 
+    // createRecipeResult(recipeResult);
+  
+    createRecipesCards(recipeResult)
+    // console.log("Tableau des recette filtrées")
+    // console.log(recipeResult)
     
-
     // ---------------------------- alimenter le filtre Ingredient
-    
     // Etablir un tableau des ingredients
     //  closeTags()
-    createIngredientFilterArray();
-        console.log("Tableau des Ingredients des recettes filtrées")
-        console.log(ingredientsFilterArray)
-
-    
+    createIngredientFilterArray(recipeResult);
+    console.log("Tableau des Ingredients des recettes filtrées")
+    console.log(ingredientsFilterArray)
     //  Etablir un tableau des Ustensiles
-    createUstensilsFilterArray();
+    createUstensilsFilterArray(recipeResult);
     console.log("Tableau des ustensils des recettes filtrées")
-        console.log(ustensilsFilterArray)
-
-        // Etablir un tableau des ingredients
-    createApplianceFilterArray();
+    console.log(ustensilsFilterArray)
+    // Etablir un tableau des ingredients
+    createApplianceFilterArray(recipeResult);
     console.log("Tableau des appareil des recettes filtrées")
     console.log(appliancesFilterArray)
     
     closeTags()
-    console.log("Ingredient filtrés")
+    // console.log("Ingredient filtrés")
 
-    showTagsIngredientsFilter();
-    showTagsAppareilsFilter();
-    showTagsUstensilsFilter();
-
-    searchRecipes()
-    // showFilterByResearchTag()
-
-    // Filtrer les recette suivant les Tags selectionnés
-
-
-   
+    showTagsIngredientsFilter(recipeResult);
+    showTagsAppareilsFilter(recipeResult);
+    showTagsUstensilsFilter(recipeResult);
+ 
 });
 
 // Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
@@ -106,65 +103,89 @@ searchFilterIng.addEventListener('change', function() {
 
     // console.log(searchFilterIng.value)
     // console.log(recipeResult)
-    keyWordsArray=[];
+    // keyWordsArray=[];
 
     createKeyWordsArray(searchFilterIng);
     console.log(keyWordsArray);
+
+    ingredientsArray=[];
+    createIngredientArray(recipeResult);
+    console.log(ingredientsArray);
     //recuperer les table
    
 
     // recherche d'une correspondance entre les mots cléfs et les mots ingredients / noms / description dans searchFilterIng
     var ingredientsFilterTagArray=[];
-    var appareilFilterTagArray=[];
-    var ustensilFilterTagArray=[];
     function createCorrespondantIngredientWordArrayFilter(){ 
         for (var i = 0; i < ingredientsFilterArray.length; i++){
             var ingredientWordListResearch = ingredientsFilterArray[i];
             for(var j=0; j<keyWordsArray.length; j++) {
                 var keyWordSearch= keyWordsArray[j];
-                // console.log(keyWordsArray);
-                // console.log(keyWordSearch);
-                // console.log(ingredientWordListResearch);
                 if(ingredientWordListResearch.includes(keyWordSearch)){
-                    // console.log( "------------------------------------------------test contient")
                     if(!ingredientsFilterTagArray.includes(ingredientWordListResearch)) {
                         ingredientsFilterTagArray.push(ingredientWordListResearch);
                     }
+                    console.log("ingredientsFilterTagArray")
                     console.log(ingredientsFilterTagArray)
                 }
             }
         }
+    }
+    var appareilsFilterTagArray=[];
+    function createCorrespondantApplianceWordArrayFilter(){
         for (var i = 0; i < appliancesFilterArray.length; i++){
             var appareilsWordListResearch = appliancesFilterArray[i];
             for(var j=0; j<keyWordsArray.length; j++) {
                 var keyWordSearch= keyWordsArray[j];
                 if(appareilsWordListResearch.includes(keyWordSearch)) {
-                    if(!appareilFilterTagArray.includes(appareilsWordListResearch)){
-                        appareilFilterTagArray.push(appareilsWordListResearch);
+                    if(!appareilsFilterTagArray.includes(appareilsWordListResearch)){
+                        appareilsFilterTagArray.push(appareilsWordListResearch);
                     }
-                    console.log(appareilFilterTagArray)
+                    // console.log(appareilsFilterTagArray)
                 }
             }
         }
-        // for (var i = 0; i < descriptionArray.length; i++){
-        //     var descriptWordListResearch = descriptionArray[i];
-        //     for(var j=0; j<keyWordsArray.length; j++) {
-        //         var keyWordSearch= keyWordsArray[j];
-        //         if(descriptWordListResearch.includes(keyWordSearch)) {
-        //             correspondantWords.push(descriptWordListResearch);                    
-        //         }
-        //     }
-        // }
-    } 
+    }
+    var ustensilsFilterTagArray=[];
+    function createCorrespondantUstensilsWordArrayFilter(){
+        for (var i = 0; i < ustensilArray.length; i++){
+            var ustensilsWordListResearch = ustensilArray[i];
+            for(var j=0; j<keyWordsArray.length; j++) {
+                var keyWordSearch= keyWordsArray[j];
+                if(ustensilsWordListResearch.includes(keyWordSearch)) {
+                    if(ustensilsFilterTagArray.includes(ustensilsWordListResearch)) {
+                        ustensilsFilterTagArray.push(ustensilsWordListResearch);                    
+                    }
+                }
+                // console.log(ustensilsFilterTagArray)
+            }
+        }
+    }
+
     createCorrespondantIngredientWordArrayFilter();
+    console.log("createCorrespondantIngredientWordArrayFilter ==> ingredientsFilterTagArray ")
     console.log(ingredientsFilterTagArray);
+
+    createCorrespondantApplianceWordArrayFilter();
+    console.log("createCorrespondantApplianceWordArrayFilter ==> appareilsFilterTagArray ")
+    console.log(appareilsFilterTagArray);
+
+    createCorrespondantUstensilsWordArrayFilter();
+    console.log("createCorrespondantUstensilsWordArrayFilter ==> ustensilsFilterTagArray ")
+    console.log(ustensilsFilterTagArray);
+
+    createSelectedTagIngredient();
+    console.log("createSelectedTagIngredient ==> tagIngredientSearchArray ")
+    console.log(tagIngredientSearchArray);
+
+
 
     
 
 
 
     // if(recipeResult.length > 0) {
-    //     showRecipes(recipeResult)
+    //     createRecipesCards(recipeResult)
     //     function createRecipeResultBySearchFilterIng(){
     //         for(var i=0; i< recipeResult.length; i++) {
     //             var recipe=recipeResult[i];
@@ -187,7 +208,7 @@ searchFilterIng.addEventListener('change', function() {
     //         }
     //     }
     // }
-    // else{showRecipes(recipes)
+    // else{createRecipesCards(recipes)
     //     function createRecipeResultBySearchFilterIng(){
     //         console.log(recipes);
     //         for(var i=0; i< recipes.length; i++) {
@@ -224,7 +245,7 @@ searchFilterIng.addEventListener('change', function() {
     // console.log(recipeResultFilter)
     // createRecipeResultBySearchFilterIng();
 
-    // showRecipes(recipeResultFilter);
+    // createRecipesCards(recipeResultFilter);
     // console.log("Tableau des recette filtrées");
     // console.log(recipeResultFilter);
 
@@ -276,7 +297,7 @@ searchFilterIng.addEventListener('change', function() {
 //         }
 //     }
 //     createRecipeResultBySearchFilterApp();
-//     showRecipes(recipeResult);
+//     createRecipesCards(recipeResult);
 //     console.log("Tableau des recette filtrées");
 //     console.log(recipeResult);
 
@@ -319,7 +340,7 @@ searchFilterIng.addEventListener('change', function() {
 //         }
 //     }
 //     createRecipeResultBySearchFilterUst();
-//     showRecipes(recipeResult);
+//     createRecipesCards(recipeResult);
 //     console.log("Tableau des recette filtrées");
 //     console.log(recipeResult);
     
