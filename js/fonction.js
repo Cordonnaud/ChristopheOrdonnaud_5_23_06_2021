@@ -7,9 +7,9 @@ function cleanWordCharactere(element) {
     element=element.replace(/ï/g,"i");
     element=element.replace(/'/g," ");
 }
-function createIndexRecipeArray(){
-    for(var i=0; i< recipes.length -1; i++) {
-        var recipeId=recipes[i].id;       
+function createIndexRecipeArray(array){
+    for(var i=0; i< array.length -1; i++) {
+        var recipeId=array[i].id;       
         if(!indexRecipeArray.includes(recipeId)){
             indexRecipeArray.push(recipeId);
         }
@@ -17,9 +17,9 @@ function createIndexRecipeArray(){
 }
 
 // Etablir un tableau des noms de recettes
-function createRecipeNameArray(){
-    for(var i=0; i< recipes.length -1; i++) {
-        var recipesName=recipes[i].name;
+function createRecipeNameArray(array){
+    for(var i=0; i< array.length -1; i++) {
+        var recipesName=array[i].name;
         var recipeName=recipesName.toLowerCase(); 
         cleanWordCharactere(recipeName);
         recipeName=recipeName.replace(/'/g," ");        
@@ -47,9 +47,9 @@ function createIngredientArray(array){
 }
 
 //  Etablir un tableau des Descriptions
-function createDescriptionArray() {
-    for(var i=0; i< recipes.length -1; i++) {
-        var descriptions=recipes[i].description;
+function createDescriptionArray(array) {
+    for(var i=0; i< array.length -1; i++) {
+        var descriptions=array[i].description;
         var description=descriptions.toLowerCase();
         cleanWordCharactere(description);
         description=description.replace(/'/g," ");
@@ -60,9 +60,9 @@ function createDescriptionArray() {
 }
 
 //  Etablir un tableau des Ustensiles
-function createUstensilsArray(){
-    for(var i=0; i< recipes.length -1; i++) {
-        var itemUstensilsArray = recipes[i].ustensils;
+function createUstensilsArray(array){
+    for(var i=0; i< array.length -1; i++) {
+        var itemUstensilsArray = array[i].ustensils;
         for(j=0; j<itemUstensilsArray.length -1; j++) {
             var ustensilItem = itemUstensilsArray[j];
             var ustensil = ustensilItem.toLowerCase();
@@ -77,10 +77,10 @@ function createUstensilsArray(){
 
 //  Etablir un tableau des Appareils
 var applianceArray=[];
-function createApplianceArray(){
-    console.log(recipes)
-    for(var i=0; i< recipes.length -1; i++) {
-        var appareils = recipes[i].appliance;
+function createApplianceArray(array){
+    // console.log(recipes)
+    for(var i=0; i< array.length -1; i++) {
+        var appareils = array[i].appliance;
         var appareil= appareils.toLowerCase();
         cleanWordCharactere(appareil);
         appareil=appareil.replace(/'/g," ");
@@ -108,7 +108,6 @@ function createKeyWordsArray(input){
         }
     }
 }
-console.log(keyWordsArray)
 
 // recherche d'une correspondance entre les mots cléfs et les mots ingredients / noms / description dans searchBar
 function createCorrespondantWordArray(keyWordSearch){ 
@@ -198,8 +197,7 @@ function createCorrespondantWordArray(keyWordSearch){
 //         }
 //     }
 // }
-console.log("Tableau des recette filtrées--------------------------------------")
-console.log(recipeResult)
+
 
 // Etablir le tableau des Recettes filtrées suivant ingredient filtrés
 function createRecipeResult(array){

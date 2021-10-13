@@ -3,12 +3,12 @@ createRecipesCards(recipes);
 // console.log(recipes)
 
 // Etablir un tableau des noms de recettes
-createRecipeNameArray();
+createRecipeNameArray(recipes);
 // console.log("Tableau des Noms de Recette");
 // console.log(recipeArray);
  
 // Etablir un tableau des Id de recettes
-createIndexRecipeArray();
+createIndexRecipeArray(recipes);
 // console.log("tableau des Id recette")
 // console.log(indexRecipeArray);
 
@@ -20,16 +20,16 @@ createIngredientArray(recipes);
 
 
 //  Etablir un tableau des Descriptions
-createDescriptionArray();
+createDescriptionArray(recipes);
 // console.log("tableau des Descriptions");
 // console.log(descriptionArray);
 
-createApplianceArray();
+createApplianceArray(recipes);
 // console.log("Tableau des Appareils");
 // console.log(appareilArray);
 
 //  Etablir un tableau des Ustensiles
-createUstensilsArray();
+createUstensilsArray(recipes);
 // console.log("Tableau des Ustensils");
 // console.log(ustensilArray);
 
@@ -103,80 +103,117 @@ searchFilterIng.addEventListener('change', function() {
 
     // console.log(searchFilterIng.value)
     // console.log(recipeResult)
-    // keyWordsArray=[];
+    keyWordsArray=[];
 
     createKeyWordsArray(searchFilterIng);
     console.log(keyWordsArray);
+    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    createRecipeResult(recipeResult);
+    // createRecipesCards(recipeResult)
+    // console.log("Tableau des recette filtrées")
+    // console.log(recipeResult)
+    // console.log (keyWordsArray)
+    // searchRecipes(keyWordsArray) 
+    console.log(recipeResult) 
+    // createRecipeResult(recipeResult);
+  
+    createRecipesCards(recipeResult)
+    // console.log("Tableau des recette filtrées")
+    // console.log(recipeResult)
+    
+    // ---------------------------- alimenter le filtre Ingredient
+    // Etablir un tableau des ingredients
+    //  closeTags()
+    createIngredientFilterArray(recipeResult);
+    console.log("Tableau des Ingredients des recettes filtrées")
+    console.log(ingredientsFilterArray)
+    //  Etablir un tableau des Ustensiles
+    createUstensilsFilterArray(recipeResult);
+    console.log("Tableau des ustensils des recettes filtrées")
+    console.log(ustensilsFilterArray)
+    // Etablir un tableau des ingredients
+    createApplianceFilterArray(recipeResult);
+    console.log("Tableau des appareil des recettes filtrées")
+    console.log(appliancesFilterArray)
+    
+    closeTags()
+    // console.log("Ingredient filtrés")
 
-    ingredientsArray=[];
-    createIngredientArray(recipeResult);
-    console.log(ingredientsArray);
-    //recuperer les table
+    showTagsIngredientsFilter(recipeResult);
+    showTagsAppareilsFilter(recipeResult);
+    showTagsUstensilsFilter(recipeResult);
+
+ 
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // ingredientsArray=[];
+    // createIngredientArray(recipeResult);
+    // console.log(ingredientsArray);
+    // //recuperer les table
    
 
-    // recherche d'une correspondance entre les mots cléfs et les mots ingredients / noms / description dans searchFilterIng
-    var ingredientsFilterTagArray=[];
-    function createCorrespondantIngredientWordArrayFilter(){ 
-        for (var i = 0; i < ingredientsFilterArray.length; i++){
-            var ingredientWordListResearch = ingredientsFilterArray[i];
-            for(var j=0; j<keyWordsArray.length; j++) {
-                var keyWordSearch= keyWordsArray[j];
-                if(ingredientWordListResearch.includes(keyWordSearch)){
-                    if(!ingredientsFilterTagArray.includes(ingredientWordListResearch)) {
-                        ingredientsFilterTagArray.push(ingredientWordListResearch);
-                    }
-                    console.log("ingredientsFilterTagArray")
-                    console.log(ingredientsFilterTagArray)
-                }
-            }
-        }
-    }
-    var appareilsFilterTagArray=[];
-    function createCorrespondantApplianceWordArrayFilter(){
-        for (var i = 0; i < appliancesFilterArray.length; i++){
-            var appareilsWordListResearch = appliancesFilterArray[i];
-            for(var j=0; j<keyWordsArray.length; j++) {
-                var keyWordSearch= keyWordsArray[j];
-                if(appareilsWordListResearch.includes(keyWordSearch)) {
-                    if(!appareilsFilterTagArray.includes(appareilsWordListResearch)){
-                        appareilsFilterTagArray.push(appareilsWordListResearch);
-                    }
-                    // console.log(appareilsFilterTagArray)
-                }
-            }
-        }
-    }
-    var ustensilsFilterTagArray=[];
-    function createCorrespondantUstensilsWordArrayFilter(){
-        for (var i = 0; i < ustensilArray.length; i++){
-            var ustensilsWordListResearch = ustensilArray[i];
-            for(var j=0; j<keyWordsArray.length; j++) {
-                var keyWordSearch= keyWordsArray[j];
-                if(ustensilsWordListResearch.includes(keyWordSearch)) {
-                    if(ustensilsFilterTagArray.includes(ustensilsWordListResearch)) {
-                        ustensilsFilterTagArray.push(ustensilsWordListResearch);                    
-                    }
-                }
-                // console.log(ustensilsFilterTagArray)
-            }
-        }
-    }
+    // // recherche d'une correspondance entre les mots cléfs et les mots ingredients / noms / description dans searchFilterIng
+    // var ingredientsFilterTagArray=[];
+    // function createCorrespondantIngredientWordArrayFilter(){ 
+    //     for (var i = 0; i < ingredientsFilterArray.length; i++){
+    //         var ingredientWordListResearch = ingredientsFilterArray[i];
+    //         for(var j=0; j<keyWordsArray.length; j++) {
+    //             var keyWordSearch= keyWordsArray[j];
+    //             if(ingredientWordListResearch.includes(keyWordSearch)){
+    //                 if(!ingredientsFilterTagArray.includes(ingredientWordListResearch)) {
+    //                     ingredientsFilterTagArray.push(ingredientWordListResearch);
+    //                 }
+    //                 console.log("ingredientsFilterTagArray")
+    //                 console.log(ingredientsFilterTagArray)
+    //             }
+    //         }
+    //     }
+    // }
+    // var appareilsFilterTagArray=[];
+    // function createCorrespondantApplianceWordArrayFilter(){
+    //     for (var i = 0; i < appliancesFilterArray.length; i++){
+    //         var appareilsWordListResearch = appliancesFilterArray[i];
+    //         for(var j=0; j<keyWordsArray.length; j++) {
+    //             var keyWordSearch= keyWordsArray[j];
+    //             if(appareilsWordListResearch.includes(keyWordSearch)) {
+    //                 if(!appareilsFilterTagArray.includes(appareilsWordListResearch)){
+    //                     appareilsFilterTagArray.push(appareilsWordListResearch);
+    //                 }
+    //                 // console.log(appareilsFilterTagArray)
+    //             }
+    //         }
+    //     }
+    // }
+    // var ustensilsFilterTagArray=[];
+    // function createCorrespondantUstensilsWordArrayFilter(){
+    //     for (var i = 0; i < ustensilArray.length; i++){
+    //         var ustensilsWordListResearch = ustensilArray[i];
+    //         for(var j=0; j<keyWordsArray.length; j++) {
+    //             var keyWordSearch= keyWordsArray[j];
+    //             if(ustensilsWordListResearch.includes(keyWordSearch)) {
+    //                 if(ustensilsFilterTagArray.includes(ustensilsWordListResearch)) {
+    //                     ustensilsFilterTagArray.push(ustensilsWordListResearch);                    
+    //                 }
+    //             }
+    //             // console.log(ustensilsFilterTagArray)
+    //         }
+    //     }
+    // }
 
-    createCorrespondantIngredientWordArrayFilter();
-    console.log("createCorrespondantIngredientWordArrayFilter ==> ingredientsFilterTagArray ")
-    console.log(ingredientsFilterTagArray);
+    // createCorrespondantIngredientWordArrayFilter();
+    // console.log("createCorrespondantIngredientWordArrayFilter ==> ingredientsFilterTagArray ")
+    // console.log(ingredientsFilterTagArray);
 
-    createCorrespondantApplianceWordArrayFilter();
-    console.log("createCorrespondantApplianceWordArrayFilter ==> appareilsFilterTagArray ")
-    console.log(appareilsFilterTagArray);
+    // createCorrespondantApplianceWordArrayFilter();
+    // console.log("createCorrespondantApplianceWordArrayFilter ==> appareilsFilterTagArray ")
+    // console.log(appareilsFilterTagArray);
 
-    createCorrespondantUstensilsWordArrayFilter();
-    console.log("createCorrespondantUstensilsWordArrayFilter ==> ustensilsFilterTagArray ")
-    console.log(ustensilsFilterTagArray);
+    // createCorrespondantUstensilsWordArrayFilter();
+    // console.log("createCorrespondantUstensilsWordArrayFilter ==> ustensilsFilterTagArray ")
+    // console.log(ustensilsFilterTagArray);
 
-    createSelectedTagIngredient();
-    console.log("createSelectedTagIngredient ==> tagIngredientSearchArray ")
-    console.log(tagIngredientSearchArray);
+    // createSelectedTagIngredient();
+    // console.log("createSelectedTagIngredient ==> tagIngredientSearchArray ")
+    // console.log(tagIngredientSearchArray);
 
 
 
