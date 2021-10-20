@@ -109,6 +109,24 @@ function createKeyWordsArray(input){
     }
 }
 
+function createKeyWordsArrayFilterIng(input){
+    if(input.value.length >= 3) {
+        var keyWords= input.value.toLowerCase();
+        cleanWordCharactere(keyWords);
+        // keyWords=keyWords.replace(/'/g," ");
+        var keyWordSplit=keyWords.split(" ");
+        for(var i=0; i<keyWordSplit.length; i++){
+            var keyWord = keyWordSplit[i];
+            if(keyWord.length>=3){
+                keyLongWord=keyWord;
+                if(!keyWordsArrayFilterIng.includes(keyLongWord)){
+                    keyWordsArrayFilterIng.push(keyLongWord);
+                }
+            }
+        }
+    }
+}
+
 // recherche d'une correspondance entre les mots cléfs et les mots ingredients / noms / description dans searchBar
 function createCorrespondantWordArray(keyWordSearch){ 
     for (var i = 0; i < ingredientsArray.length; i++){
@@ -137,6 +155,18 @@ function createCorrespondantWordArray(keyWordSearch){
             if(descriptWordListResearch.includes(wordSearch)) {
                 correspondantWords.push(descriptWordListResearch);                    
             }
+        }
+    }
+}
+function createCorrespondantWordArrayFilterIng(array){ 
+    for (var i = 0; i < ingredientsArray.length; i++){
+        var ingredientWordListResearch = ingredientsArray[i];
+        for(var j=0; j<array.length; j++) {
+            var wordSearch= array[j];
+            if(ingredientWordListResearch.includes(wordSearch)) {
+                correspondantWords.push(ingredientWordListResearch);                    
+            }
+            // console.log(correspondantWords)
         }
     }
 }
@@ -249,6 +279,30 @@ function createRecipeResult(array){
     }
 }
 
+function createRecipeResultFilterIng(array){
+    for(var i=0; i< array.length; i++) {
+       var recipe=array[i];
+       var ingredients= recipe.ingredients;
+       console.log(ingredients);
+       for(var j=0; j < ingredients.length; j++){
+           var ingredientBrut= ingredients[j].ingredient;
+           var ingredient= ingredientBrut.toLowerCase();
+           cleanWordCharactere(ingredient);
+           ingredient=ingredient.replace(/'/g," ");
+           console.log(ingredient);
+           for(var k=0; k<keyWordsArrayFilterIng.length; k++){
+               var elementCor=keyWordsArrayFilterIng[k];
+               console.log(elementCor);
+               if(ingredient==elementCor){
+                   recipeResult=[];
+                   if(!recipeResult.includes(recipe)){
+                       recipeResult.push(recipe);
+                   }
+               }
+           }
+       }
+    }
+}
 
 
 

@@ -103,18 +103,21 @@ searchFilterIng.addEventListener('change', function() {
 
     // console.log(searchFilterIng.value)
     // console.log(recipeResult)
-    keyWordsArray=[];
+    // keyWordsArray=[];
 
-    createKeyWordsArray(searchFilterIng);
-    console.log(keyWordsArray);
+    createKeyWordsArrayFilterIng(searchFilterIng);
+    console.log(keyWordsArrayFilterIng);
+
     // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    createRecipeResult(recipeResult);
+    // filtrer recipe result en fonction de l'input filtre 
+    createRecipeResultFilterIng(recipeResult); 
+    console.log(recipeResult) 
     // createRecipesCards(recipeResult)
     // console.log("Tableau des recette filtrées")
     // console.log(recipeResult)
     // console.log (keyWordsArray)
     // searchRecipes(keyWordsArray) 
-    console.log(recipeResult) 
+   
     // createRecipeResult(recipeResult);
   
     createRecipesCards(recipeResult)
