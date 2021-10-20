@@ -288,12 +288,12 @@ function createRecipeResultFilterIng(array){
            var ingredientBrut= ingredients[j].ingredient;
            var ingredient= ingredientBrut.toLowerCase();
            cleanWordCharactere(ingredient);
-           ingredient=ingredient.replace(/'/g," ");
+        //    ingredient=ingredient.replace(/'/g," ");
            console.log(ingredient);
            for(var k=0; k<keyWordsArrayFilterIng.length; k++){
                var elementCor=keyWordsArrayFilterIng[k];
-               console.log(elementCor);
-               if(ingredient==elementCor){
+            //    console.log(elementCor);
+               if(ingredient.includes(elementCor)){
                    recipeResult=[];
                    if(!recipeResult.includes(recipe)){
                        recipeResult.push(recipe);
