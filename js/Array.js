@@ -24,16 +24,17 @@ createDescriptionArray(recipes);
 // console.log("tableau des Descriptions");
 // console.log(descriptionArray);
 
+//  Etablir un tableau des Appareils
 createApplianceArray(recipes);
 // console.log("Tableau des Appareils");
-// console.log(appareilArray);
+// console.log(applianceArray);
 
 //  Etablir un tableau des Ustensiles
 createUstensilsArray(recipes);
 // console.log("Tableau des Ustensils");
 // console.log(ustensilArray);
 
-//  Etablir un tableau des Appareils
+
 
 
 //  afficher les Tags des filtre 
@@ -104,23 +105,20 @@ searchFilterIng.addEventListener('change', function() {
     // console.log(searchFilterIng.value)
     // console.log(recipeResult)
     // keyWordsArray=[];
-
+// +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    // filtrer recipe result en fonction de l'input filtre 
     createKeyWordsArrayFilterIng(searchFilterIng);
     console.log(keyWordsArrayFilterIng);
 
-    // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-    // filtrer recipe result en fonction de l'input filtre 
-    createRecipeResultFilterIng(recipeResult); 
+    createRecipeResultFilterIng(ingredientsFilterArray); 
     console.log(recipeResult) 
-    // createRecipesCards(recipeResult)
-    // console.log("Tableau des recette filtrées")
-    // console.log(recipeResult)
-    // console.log (keyWordsArray)
-    // searchRecipes(keyWordsArray) 
-   
-    // createRecipeResult(recipeResult);
   
+
+    console.log("test suppression tableau tagSelected");
+    console.log(tagsSelectedArray);
+    
     createRecipesCards(recipeResult)
+
     // console.log("Tableau des recette filtrées")
     // console.log(recipeResult)
     
