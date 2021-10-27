@@ -170,6 +170,7 @@ function createCorrespondantWordArrayFilterIng(array){
         }
     }
 }
+
 // console.log(correspondantWords)
 
 // function searchRecipes(keywords){
@@ -278,28 +279,79 @@ function createRecipeResult(array){
         }
     }
 }
-
-function createRecipeResultFilterIng(array){
+function createRecipeResult2(array){
     for(var i=0; i< array.length; i++) {
        var recipe=array[i];
        var ingredients= recipe.ingredients;
+    //    var ustensils=recipe.ustensils;
        for(var j=0; j < ingredients.length; j++){
            var ingredientBrut= ingredients[j].ingredient;
            var ingredient= ingredientBrut.toLowerCase();
            cleanWordCharactere(ingredient);
-        //    ingredient=ingredient.replace(/'/g," ");
-           for(var k=0; k<keyWordsArrayFilterIng.length; k++){
-               var elementCor=keyWordsArrayFilterIng[k];
-               if(ingredient.includes(elementCor)){
-                   recipeResult=[];
-                   if(!recipeResult.includes(recipe)){
-                       recipeResult.push(recipe);
-                   }
-               }
-           }
-       }
+           ingredient=ingredient.replace(/'/g," ");
+        //    for(var k=0; k<correspondantWords.length; k++){
+        //        var elementCor=correspondantWords[k];
+            if(ingredient.includes(searchFilterIng.value)){
+                if(!recipeResult2.includes(recipe)){
+                    recipeResult2.push(recipe);
+                }
+            }
+        }
+    // }
+// }
+    //    for(var j=0; j<ustensils.length; j++){
+    //        var ustensilsBrut= ustensils[j];
+    //        var ustensil=ustensilsBrut.toLowerCase();
+    //        cleanWordCharactere(ustensil);
+    //        ustensil=ustensil.replace(/'/g," ");
+    //     //    for(var k=0; k<correspondantWords.length; k++){
+    //     //        var elementCor=correspondantWords[k];
+    //         if(ustensil.includes(searchFilterUst.value)){
+    //             if(!recipeResult2.includes(recipe)){
+    //                 recipeResult2.push(recipe);
+    //             }
+    //         }
+    //     }
     }
 }
+    //    for(var j=0; j<array.length; j++){
+    //        var recipeDescript= array[i].description;
+    //        var descript=recipeDescript.toLowerCase();
+    //        cleanWordCharactere(descript);
+    //        descript=descript.replace(/'/g," ");
+    //        for(var k=0; k<correspondantWords.length; k++){
+    //            var elementCor=correspondantWords[k];
+    //            if(descript.includes(elementCor)){
+    //                if(!recipeResult.includes(recipe)){
+    //                    recipeResult.push(recipe);
+    //                }
+    //            }
+    //        }
+    //    }
+//    }
+// }
+
+// function createRecipeResultFilterIng(array){
+//     for(var i=0; i< array.length; i++) {
+//        var recipe=array[i];
+//        var ingredients= recipe.ingredients;
+//        for(var j=0; j < ingredients.length; j++){
+//            var ingredientBrut= ingredients[j].ingredient;
+//            var ingredient= ingredientBrut.toLowerCase();
+//            cleanWordCharactere(ingredient);
+//         //    ingredient=ingredient.replace(/'/g," ");
+//            for(var k=0; k<keyWordsArrayFilterIng.length; k++){
+//                var elementCor=keyWordsArrayFilterIng[k];
+//                if(ingredient.includes(elementCor)){
+//                    recipeResult=[];
+//                    if(!recipeResult.includes(recipe)){
+//                        recipeResult.push(recipe);
+//                    }
+//                }
+//            }
+//        }
+//     }
+// }
 
 
 
@@ -471,11 +523,11 @@ function createSelectedTagIngredient(event){
     else{selectedTag.removeChild(tagItem)
     }
 
-    if(!tagsSelectedArray.includes(ingredientTaged)){
-        tagsSelectedArray.push(ingredientTaged)
-        }
+    // if(!tagsSelectedArray.includes(ingredientTaged)){
+    //     tagsSelectedArray.push(ingredientTaged)
+    //     }
 
-    console.log(tagsSelectedArray);
+    // console.log(tagsSelectedArray);
     // console.log(tagIngredientSearchArray);
     
    
@@ -521,11 +573,11 @@ function createSelectedTagAppareils(event){
     else{selectedTag.removeChild(tagItem)};
 
     
-    if(!tagsSelectedArray.includes(appareilTaged)){
-        tagsSelectedArray.push(appareilTaged)
-        }
+    // if(!tagsSelectedArray.includes(appareilTaged)){
+    //     tagsSelectedArray.push(appareilTaged)
+    //     }
 
-    console.log(tagsSelectedArray);
+    // console.log(tagsSelectedArray);
     // console.log(tagAppareilSearchArray);
   
 
@@ -575,15 +627,17 @@ function createSelectedTagUstensils(event){
         }
     else{selectedTag.removeChild(tagItem)};
 
-    if(!tagsSelectedArray.includes(ustensilTaged)){
-        tagsSelectedArray.push(ustensilTaged)
-        }
+    // if(!tagsSelectedArray.includes(ustensilTaged)){
+    //     tagsSelectedArray.push(ustensilTaged)
+    //     }
 
     
-    console.log(tagsSelectedArray);
+    // console.log(tagsSelectedArray);
     // console.log(tagUstensilSearchArray);
   
 }
+// console.log("tagsSelectedArray");
+// console.log(tagsSelectedArray);
 
 
 //  Cacher les Tags Array

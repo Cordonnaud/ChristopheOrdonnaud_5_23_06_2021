@@ -47,7 +47,7 @@ showTagsUstensils()
 
 
 
-// Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
+// Recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
 searchBar.addEventListener('change', function() {
     
     // Etablir un tableau des mots clefs saisis par l'utilisateur à partir de 3 caractères dans la SEARCHBAR
@@ -96,28 +96,36 @@ searchBar.addEventListener('change', function() {
     showTagsIngredientsFilter(recipeResult);
     showTagsAppareilsFilter(recipeResult);
     showTagsUstensilsFilter(recipeResult);
+    
+    // console.log("tagsSelectedArray");
+    // console.log(tagsSelectedArray);
  
 });
 
-// Algo  de recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
+
+
+// Recherche des recettes suivant Nom et/ou Ingredient et/ou Description documentés dans la barre de recherche
 searchFilterIng.addEventListener('change', function() {
 
-    // console.log(searchFilterIng.value)
-    // console.log(recipeResult)
-    // keyWordsArray=[];
+    console.log(searchFilterIng.value)
+    createRecipeResult2(recipeResult)
+    console.log(recipeResult)
+    console.log (recipeResult2)
+    keyWordsArray=[];
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // filtrer recipe result en fonction de l'input filtre 
     createKeyWordsArrayFilterIng(searchFilterIng);
     console.log(keyWordsArrayFilterIng);
 
-    createRecipeResultFilterIng(ingredientsFilterArray); 
-    console.log(recipeResult) 
+    // createRecipeResultFilterIng(ingredientsFilterArray); 
+    // console.log(recipeResult) 
   
 
     console.log("test suppression tableau tagSelected");
     console.log(tagsSelectedArray);
-    
-    createRecipesCards(recipeResult)
+
+    createRecipesCards(recipeResult2)
 
     // console.log("Tableau des recette filtrées")
     // console.log(recipeResult)
@@ -125,24 +133,31 @@ searchFilterIng.addEventListener('change', function() {
     // ---------------------------- alimenter le filtre Ingredient
     // Etablir un tableau des ingredients
     //  closeTags()
-    createIngredientFilterArray(recipeResult);
+    createIngredientFilterArray(recipeResult2);
     console.log("Tableau des Ingredients des recettes filtrées")
     console.log(ingredientsFilterArray)
     //  Etablir un tableau des Ustensiles
-    createUstensilsFilterArray(recipeResult);
+    createUstensilsFilterArray(recipeResult2);
     console.log("Tableau des ustensils des recettes filtrées")
     console.log(ustensilsFilterArray)
     // Etablir un tableau des ingredients
-    createApplianceFilterArray(recipeResult);
+    createApplianceFilterArray(recipeResult2);
     console.log("Tableau des appareil des recettes filtrées")
     console.log(appliancesFilterArray)
     
     closeTags()
     // console.log("Ingredient filtrés")
 
-    showTagsIngredientsFilter(recipeResult);
-    showTagsAppareilsFilter(recipeResult);
-    showTagsUstensilsFilter(recipeResult);
+    showTagsIngredientsFilter(recipeResult2);
+    showTagsAppareilsFilter(recipeResult2);
+    showTagsUstensilsFilter(recipeResult2);
+
+    // Selection des Tag 
+    // createSelectedTagIngredient();
+    // createSelectedTagAppareils();
+    // createSelectedTagUstensils();
+    // console.log("tagsSelectedArray");
+    // console.log(tagsSelectedArray);
 
  
     // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -313,7 +328,8 @@ searchFilterIng.addEventListener('change', function() {
     // showTagsUstensilsFilter();
     // showFilterByResearchTag()
 });
-    
+
+
 // searchFilterApp.addEventListener('change', function(event) {
 
 //     console.log(searchFilterApp.value)

@@ -14,6 +14,7 @@ var keywords=[];
 var correspondantWords =[];
 var recipeFilterArray=[];
 var recipeResult=[];
+var recipeResult2=[];
 var ingredientsFilterArray=[];
 var appliancesFilterArray=[];
 var ustensilsFilterArray=[];
