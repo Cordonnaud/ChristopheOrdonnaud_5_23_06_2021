@@ -72,8 +72,8 @@ searchBar.addEventListener('change', function() {
     // createRecipeResult(recipeResult);
   
     createRecipesCards(recipeResult)
-    // console.log("Tableau des recette filtrées")
-    // console.log(recipeResult)
+    console.log("Tableau des recette filtrées")
+    console.log(recipeResult)
     
     // ---------------------------- alimenter le filtre Ingredient
     // Etablir un tableau des ingredients
@@ -94,6 +94,8 @@ searchBar.addEventListener('change', function() {
     // console.log("Ingredient filtrés")
 
     showTagsIngredientsFilter(recipeResult);
+    console.log("ingredient des recettes")
+    console.log(ingredientsFilterArray)
     showTagsAppareilsFilter(recipeResult);
     showTagsUstensilsFilter(recipeResult);
     
@@ -116,7 +118,7 @@ searchFilterIng.addEventListener('change', function() {
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     // filtrer recipe result en fonction de l'input filtre 
     createKeyWordsArrayFilterIng(searchFilterIng);
-    console.log(keyWordsArrayFilterIng);
+    
 
     // createRecipeResultFilterIng(ingredientsFilterArray); 
     // console.log(recipeResult) 

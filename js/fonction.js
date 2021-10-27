@@ -717,14 +717,13 @@ function closeTagFilterUst(event){
 // Etablir un tableau des ingredients des recettes filtrées
 // console.log(recipeResult)
 function createIngredientFilterArray(array){
-    
+    ingredientsFilterArray=[];
     for(var i=0; i< array.length; i++) {
         var itemIngredientsFilterArray= array[i].ingredients;
     for(var j=0; j < itemIngredientsFilterArray.length -1; j++){
         var ingredientFilterBrut= itemIngredientsFilterArray[j].ingredient;
         var ingredientFilter= ingredientFilterBrut.toLowerCase();
         cleanWordCharactere(ingredientFilter);
-
         ingredientFilter=ingredientFilter.replace(/'/g," ");
         if(!ingredientsFilterArray.includes(ingredientFilter)){
             ingredientsFilterArray.push(ingredientFilter);
@@ -737,6 +736,7 @@ function createIngredientFilterArray(array){
 
 //  Etablir un tableau des Ustensiles des recettes filtrées
 function createUstensilsFilterArray(array){
+    ustensilsFilterArray=[];
     for(var i=0; i< array.length; i++) {
         var itemUstensilsFilterArray= array[i].ustensils;
         for(j=0; j<itemUstensilsFilterArray.length -1; j++) {
@@ -755,6 +755,7 @@ function createUstensilsFilterArray(array){
 
 //  Etablir un tableau des Appareils des recettes filtrées
 function createApplianceFilterArray(array){
+    appliancesFilterArray=[]
     for(var i=0; i< array.length; i++) {
         var applianceFilterBrut= array[i].appliance;
         var applianceFilter= applianceFilterBrut.toLowerCase();
@@ -780,7 +781,7 @@ function showTagsIngredientsFilter() {
         //     var ingredientsFilterArray = ingredientsArray[i].ingredient;
             
         ingredientsFilterArray.sort();
-        // console.log(ingredientsFilterArray);
+        console.log(ingredientsFilterArray);
         for(var j=0; j<ingredientsFilterArray.length ; j++ ){
             var ingredientA = ingredientsFilterArray[j];
             var listContainer= document.getElementById("ingredients_menu");
